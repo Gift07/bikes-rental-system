@@ -64,7 +64,11 @@ const Signin = () => {
                       <button
                           className='px-16 py-2 bg-blue-600 rounded-lg'
                           type='submit'>
-                          Sign in
+                          {is_loading ? (
+                                  <>Loading...</>
+                              ) : (
+                                  <>Sign in</>
+                              )}
                       </button>
                   </div>
                   <div className='w-full flex items-center justify-center'>
