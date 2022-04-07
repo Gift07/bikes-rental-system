@@ -36,8 +36,7 @@ const authReducer = (state = initialState, action) => {
                       username: user.user_name,
                       userId: user._id,
                       email: user.email,
-                      user_role: user.user_role,
-                      
+                      user_role: user.user_role,                      
                 }
             } else {
                 return state;

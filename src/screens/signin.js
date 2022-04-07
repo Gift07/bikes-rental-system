@@ -47,7 +47,7 @@ const Signin = () => {
                       <input
                           name='username'
                           placeholder='user name'
-                          onChange={(event) => setFormData({...FormData,username:event.target.value})}
+                          onChange={(event) => setFormData({...formData,username:event.target.value})}
                           className='w-full outline-none rounded-md p-2 border-none text-black' />
                   </div>
                   <div className='w-8/12 flex flex-col justify-center px-10 py-5'>

@@ -25,7 +25,7 @@ const locationReducer = (state = initialState, action) => {
             return {
                 ...state,
                 is_loading: false,
-                location:action.payload
+                locations:action.payload.data
             }
         case constants.LOCATION_FETCHING_SUCCESSFUL:
             return {

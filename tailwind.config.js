@@ -5,7 +5,10 @@ module.exports = {
         extend: {
             fontFamily: {
                 'gotham': [ 'Montserrat', 'sans-serif']
-            }
+            },
+            height: {
+                '128': '30rem',
+              }
         },
     },
     variants: {

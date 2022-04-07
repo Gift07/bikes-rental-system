@@ -12,7 +12,7 @@ import Cart from './screens/cart';
 
 function App() {
     const dispatch = useDispatch()
-    const auth = useSelector(state => state.signIn)
+    const {is_authenticated} = useSelector(state => state.auth)
   
     useEffect(() => {
       dispatch(loadUser())

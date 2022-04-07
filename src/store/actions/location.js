@@ -22,7 +22,7 @@ export const createLocation = (body) => async (dispatch) => {
 export const fetchLocation = () => async (dispatch) => {
     try {
         dispatch({
-            type:constants.LOCATION_FETCHING_REQUEST
+            type:constants.LOCATIONS_FETCHING_REQUEST
         })
         const { data } = await axiosInstance.get('/location')
         dispatch({
@@ -38,6 +38,7 @@ export const fetchLocation = () => async (dispatch) => {
 }
 
 export const fetchLocationId = (id) => async (dispatch) => {
+    console.log(id)
     try {
         dispatch({
             type:constants.LOCATION_FETCHING_REQUEST

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import bike3 from "../images/bike3.jpg"
+import Map from '../components/cart/map'
 
 const Cart = () => {
   return (
@@ -24,11 +25,11 @@ const Cart = () => {
           </div>
           <div className='w-full h-full flex items-center justify-center'>
               <div style={{height:"30rem"}}
-                  className='w-9/12 bg-gray-400 mt-4 rounded-lg grid grid-cols-3'>
-                  <div className='col-span-2 bg-red-200 h-full w-full rounded-l-lg'>
-                      Map
+                  className='w-9/12 glass mt-4 rounded-lg grid grid-cols-3'>
+                  <div className='col-span-2 h-full w-full rounded-l-lg'>
+                      <Map/>
                   </div>
-                  <div className='w-full h-full rounded-r-lg flex flex-col bg-purple-300'>
+                  <div className='w-full h-full rounded-r-lg flex flex-col'>
                       <div className='w-full h-44 flex items-center justify-center'>
                           <img
                               className='w-11/12 rounded-lg h-full object-cover mt-4'

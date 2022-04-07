@@ -1,9 +1,12 @@
 import React, { useRef, useEffect,useState } from 'react';
 import mapboxgl from 'mapbox-gl';
+import { fetchUserLocation } from '../../store/actions/map';
+import { useDispatch } from 'react-redux';
 
 const Map = () => {
   const access_token = "pk.eyJ1IjoiZ2lmdDA3IiwiYSI6ImNsMWc3ZDJyZTA3NG4zZ3F1cmkwc3NrbmkifQ._T6D4V9QTVQBg3ajYnWiEw"
   mapboxgl.accessToken = access_token
+  const dispatch = useDispatch()
 
   const mapContainer = useRef(null);
   const map = useRef(null);
@@ -13,9 +16,9 @@ const Map = () => {
   const [lng, setLng] = useState(39.26951);  //Latitude
   const [lat, setLat] = useState(-6.82349);  //Longitude
   const [userLng, setUserLng] = useState(null)
-  const [userLat,setUserLat] = useState(null)
+  const [userLat, setUserLat] = useState(null)
   const [zoom, setZoom] = useState(13);    //Zoom Level
-  const [coords,setCoords] = useState()
+  const [coords, setCoords] = useState()
   const start = [lng, lat];
   
 
@@ -133,7 +136,7 @@ const Map = () => {
       center: [lng, lat],
       zoom: zoom,
       minZoom: 11,
-      maxZoom:15
+      maxZoom: 15
     });
     map.current.on('move', () => {
       setLng(map.current.getCenter().lng.toFixed(4));
@@ -144,22 +147,16 @@ const Map = () => {
 
   }, [map.current]);
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      if (position) {
-        setUserLat(position.coords.latitude)
-        setUserLng(position.coords.longitude)
-       console.log(position) 
-      }
-    });
+    dispatch(fetchUserLocation())
   }, [])
   // useEffect(() => {
   //   var marker = new mapboxgl.Marker().setLngLat([userLng,userLat]).addTo(map)
   // },[])
 
   return (
-        <div className="w-full py-3 flex items-center justify-center">
-            <div ref={mapContainer}  className="w-10/12 h-96 rounded-md bg-yellow-300 mt-10"/>
-        </div>
+    <div
+      ref={mapContainer}
+      className={`w-11/12 h-128 lg:h-96 rounded-md ml-4 mt-4 bg-yellow-300`} />
   )
 }
 

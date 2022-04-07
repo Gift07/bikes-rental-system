@@ -34,7 +34,6 @@ export const signUp = (body) => async (dispatch) => {
             
         }) 
         const { data } = await axiosInstance.post("/auth/sign-up", body)
-        console.log(data)
         dispatch({
             type: actionTypes.SIGN_UP_SUCCESS,
             payload:data,
@@ -56,9 +55,13 @@ export const signUp = (body) => async (dispatch) => {
 
 // load user
 export const loadUser = () => {
-    return (dispatch, getState) => {
-        const data = getState().auth
-        console.log(data)
+    return (dispatch) => {
+        const accessToken = localStorage.getItem('accessToken')
+        const refreshToken = localStorage.getItem('refreshToken')
+        const data = {
+            accessToken,
+            refreshToken
+        }
       if (data) {
         dispatch({
           type: actionTypes.USER_LOADED_SUCCESSFULL,

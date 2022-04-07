@@ -1,16 +1,18 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import {AiOutlineMenu} from "react-icons/ai"
+import Matheus from "../images/matheus.jpg"
 import Logo from "../images/Logo.png"
 
 const Navbar = ({is_authenticated,navScroll,username}) => {
   return (
-        <div className={`w-full px-10 z-30 fixed top-0 h-14 flex items-center justify-between ${navScroll && `navbar`}`}>
+        <div className={`w-full px-4 md:px-8 lg:px-10 z-30 fixed top-0 h-14 flex items-center justify-between ${navScroll && `navbar`}`}>
             <div className="">
                 <img
                     className="h-12 w-12 object-cover rounded-full"
                     src={Logo} alt="logo" />
             </div>
-            <div className="flex items-center">
+            <div className="hidden lg:flex items-center ">
                 <ul className="flex items-center justify-between pr-5">
                     <NavLink to="/">
                         <li className="px-4 py-1 rounded-md hover:border-b-2 border-blue-600 cursor-pointer">
@@ -27,25 +29,38 @@ const Navbar = ({is_authenticated,navScroll,username}) => {
                             Locations
                         </li>
                     </NavLink>
-                    {
-                        is_authenticated && (
+                    { is_authenticated && (
                             <li className="px-4 py-1 rounded-md hover:border-b-2 border-blue-600 cursor-pointer">
                                 <Link to="/rental/register">               
                                     join us
                                 </Link>
-                            </li>
-                        )
+                            </li>)
                     }
-                    {
-                        navScroll && (
-                            <Link to="/user/sign-in">                            
-                                <button className='bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-500'>
-                                    Login
-                                </button>
-                            </Link> 
+                    {navScroll && (
+                          <>
+                              {is_authenticated ? (
+                                      <Link to="/profile">                                        
+                                        <div>
+                                            <img
+                                               className='w-12 h-12 rounded-full object-cover'
+                                               src={Matheus} alt="matheus"/>
+                                        </div>
+                                      </Link>
+                                  ): (                                      
+                                    <Link to="/user/sign-in">                            
+                                        <button className='bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-500'>
+                                            Login
+                                        </button>
+                                    </Link> 
+                                  )
+                              }
+                          </>
                         )
                     }
                 </ul>
+            </div>
+            <div className='flex items-center lg:hidden'>
+                <AiOutlineMenu size={22}/>
             </div>
         </div>
   )
