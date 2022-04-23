@@ -7,6 +7,7 @@ module.exports = {
                 'gotham': [ 'Montserrat', 'sans-serif']
             },
             height: {
+                '100':'26rem',
                 '128': '30rem',
               }
         },

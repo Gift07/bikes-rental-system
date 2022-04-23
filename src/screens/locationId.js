@@ -40,7 +40,7 @@ const LocationId = () => {
             />
           {/* top area */}
           <div className='relative top-14'>
-            <Header
+             <Header
                     navScroll={navScroll}
                     username={username}
                     is_authenticated={is_authenticated} />
@@ -67,7 +67,7 @@ const LocationId = () => {
                     {location.bikes.map((bike) => <Card bike={bike} name={location.location?.name} />)}
                 </div>
             </div>
-            <div className='w-full flex flex-col items-center justify-center'>
+            <div className='w-full flex flex-col items-center justify-center lg:hidden md:hidden'>
               <div className='grid grid-cols-2 items-center justify-center gap-4 text-gray-900 mb-3'>
               {location.bikes.map(bike => (
                   <div style={{

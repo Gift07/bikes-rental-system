@@ -6,6 +6,7 @@ import "../layout.scss"
 import Locations from "../components/Home/locations";
 import Navbar from '../components/navbar';
 import { fetchLocation } from '../store/actions/location';
+import Landing from '../components/Home/landing';
 
 
 const Home = () => {
@@ -35,13 +36,7 @@ const Home = () => {
             />
             <div className="relative top-14">
                 {/* Greetings area */}
-                <Header
-                    navScroll={navScroll}
-                    username={username}
-                    is_authenticated={is_authenticated} />
-                <div className='flex items-center justify-center'>
-                     <Map/>
-                </div>
+                <Landing/>
                 <Locations
                     is_loading={is_loading}
                     error={error}
