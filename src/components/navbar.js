@@ -4,7 +4,10 @@ import {AiOutlineMenu} from "react-icons/ai"
 import Matheus from "../images/matheus.jpg"
 import Logo from "../images/Logo.png"
 
-const Navbar = ({is_authenticated,navScroll,username}) => {
+const Navbar = ({ is_authenticated, navScroll, sidebar, setSidebar }) => {
+    const handleSidebar = () => {
+        setSidebar(!sidebar)
+    }
   return (
         <div className={`w-full px-4 md:px-8 lg:px-10 z-30 fixed top-0 h-14 flex items-center justify-between ${navScroll && `navbar`}`}>
             <div className="">
@@ -60,7 +63,7 @@ const Navbar = ({is_authenticated,navScroll,username}) => {
                 </ul>
             </div>
             <div className='flex items-center lg:hidden'>
-                <AiOutlineMenu size={22}/>
+                <AiOutlineMenu onClick={handleSidebar} size={22}/>
             </div>
         </div>
   )

@@ -6,7 +6,7 @@ export const createLocation = (body) => async (dispatch) => {
         dispatch({
             type:constants.LOCATION_CREATE_REQUEST
         })
-        const { data } = await axiosInstance.post('/location', body)
+        const { data } = await axiosInstance.post('location', body)
         dispatch({
             type: constants.LOCATION_CREATE_SUCCESSFUL,
             payload:data,
@@ -24,7 +24,7 @@ export const fetchLocation = () => async (dispatch) => {
         dispatch({
             type:constants.LOCATIONS_FETCHING_REQUEST
         })
-        const { data } = await axiosInstance.get('/location')
+        const { data } = await axiosInstance.get('location')
         dispatch({
             type: constants.LOCATIONS_FETCHING_SUCCESSFUL,
             payload:data
@@ -43,7 +43,7 @@ export const fetchLocationId = (id) => async (dispatch) => {
         dispatch({
             type:constants.LOCATION_FETCHING_REQUEST
         })
-        const { data } = await axiosInstance.get(`/location/${id}`)
+        const { data } = await axiosInstance.get(`location/${id}`)
         dispatch({
             type: constants.LOCATION_FETCHING_SUCCESSFUL,
             payload:data

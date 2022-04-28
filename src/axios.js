@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:8800/api/";
+const baseURL = "https://bikes-rent.herokuapp.com/api/";
 const refresh_token =
   typeof window !== "undefined" && localStorage.getItem("refreshToken");
 

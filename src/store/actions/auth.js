@@ -7,7 +7,7 @@ export const signIn = (body) => async(dispatch) => {
             type: actionTypes.SIGN_IN_REQUEST,
             
         })
-        const { data } = await axiosInstance.post('/auth/sign-in', body)
+        const { data } = await axiosInstance.post('auth/sign-in', body)
         dispatch({
             type: actionTypes.SIGN_IN_SUCCESS,
             payload: data,
@@ -33,7 +33,7 @@ export const signUp = (body) => async (dispatch) => {
             type: actionTypes.SIGN_UP_REQUEST,
             
         }) 
-        const { data } = await axiosInstance.post("/auth/sign-up", body)
+        const { data } = await axiosInstance.post("auth/sign-up", body)
         dispatch({
             type: actionTypes.SIGN_UP_SUCCESS,
             payload:data,

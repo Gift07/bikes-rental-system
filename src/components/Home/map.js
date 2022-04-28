@@ -1,5 +1,6 @@
 import React, { useRef, useEffect,useState } from 'react';
 import mapboxgl from 'mapbox-gl';
+// import MapboxDirections from '@mapbox/mapbox-gl-directions';
 import { fetchUserLocation } from '../../store/actions/map';
 import { useDispatch, useSelector } from 'react-redux';
 import "../../layout.css"
@@ -28,6 +29,23 @@ const Map = () => {
       center: [lng, lati],
       zoom: zoom,
     });
+        // Add navigation control (the +/- zoom buttons)
+        map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+
+        map.on('move', () => {
+          setLng(map.getCenter().lng.toFixed(4));
+          setLat(map.getCenter().lat.toFixed(4));
+          setZoom(map.getZoom().toFixed(2));
+        });
+
+    // map.addControl(
+    //   new MapboxDirections({
+    //     accessToken: mapboxgl.accessToken,
+    //     unit: 'metric',
+    //     profile: 'mapbox/cycling'
+    //   }),
+    //   'top-left'
+    //   );
   //  add markers
   const el = document.createElement('div');
   el.className = 'marker';

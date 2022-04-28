@@ -10,7 +10,7 @@ const Signin = () => {
     const dispatch = useDispatch()
     const { is_loading, is_authenticated, error } = useSelector(state => state.auth)
     const [formData, setFormData] = useState({
-        username:"",
+        email:"",
         password:""
     })
     const handleSubmit = (event) => {
@@ -42,12 +42,13 @@ const Signin = () => {
                   className='w-7/12 flex flex-col justify-center items-center glass rounded-lg'>
                   <div className='w-8/12 flex flex-col justify-center px-10 py-5'>
                       <label>
-                          User Name
+                          email
                       </label>
                       <input
-                          name='username'
-                          placeholder='user name'
-                          onChange={(event) => setFormData({...formData,username:event.target.value})}
+                          name='email'
+                          type='email'
+                          placeholder='email'
+                          onChange={(event) => setFormData({...formData,email:event.target.value})}
                           className='w-full outline-none rounded-md p-2 border-none text-black' />
                   </div>
                   <div className='w-8/12 flex flex-col justify-center px-10 py-5'>
