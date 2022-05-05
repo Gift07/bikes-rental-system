@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { useSelector,useDispatch } from 'react-redux';
+import Home from './screens/home';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { loadUser } from "./store/actions/auth"
+import LocationId from './screens/locationId';
+import Signin from './screens/signin';
+import Signup from './screens/signup';
+import Profile from './screens/profile';
+import Travels from './screens/travels';
+import Register from './screens/rentRegister';
+import Cart from './screens/cart';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const dispatch = useDispatch()
+    const {is_authenticated} = useSelector(state => state.auth)
+  
+    useEffect(() => {
+      dispatch(loadUser())
+    }, [dispatch])
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="rental-location/:id" element={<LocationId />} />
+                <Route path="rental/register" element={<Register />} />
+                <Route path='user/sign-in' element={<Signin />} />
+                <Route path="user/sign-up" element={<Signup />} />
+                <Route path="profile" element={<Profile />} />
+                <Route path="travels" element={<Travels />} />
+                <Route path="bike/rent" element={<Cart />} />
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
