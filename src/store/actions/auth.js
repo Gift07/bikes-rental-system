@@ -25,13 +25,12 @@ export const signIn = (body) => async(dispatch) => {
 }
 
 export const signUp = (body) => async (dispatch) => {
-    console.log(body)
     try {
         dispatch({
-            type: actionTypes.SIGN_UP_REQUEST,
-            
+            type: actionTypes.SIGN_UP_REQUEST,      
         }) 
-        const { data } = await axiosInstance.post("auth/sign-up", body)
+
+        const data = await axiosInstance.post("auth/sign-up", body)
         console.log(data)
         dispatch({
             type: actionTypes.SIGN_UP_SUCCESS,
