@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import Home from './screens/home';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes,Navigate } from "react-router-dom"
 import { loadUser } from "./store/actions/auth"
 import LocationId from './screens/locationId';
 import Signin from './screens/signin';
@@ -10,6 +10,7 @@ import Profile from './screens/profile';
 import Travels from './screens/travels';
 import Register from './screens/rentRegister';
 import Cart from './screens/cart';
+import Loading from './screens/loading';
 
 function App() {
     const dispatch = useDispatch()
@@ -26,9 +27,10 @@ function App() {
                 <Route path="rental/register" element={<Register />} />
                 <Route path='user/sign-in' element={<Signin />} />
                 <Route path="user/sign-up" element={<Signup />} />
-                <Route path="profile" element={<Profile />} />
-                <Route path="travels" element={<Travels />} />
-                <Route path="bike/rent" element={<Cart />} />
+                <Route path='loading-page' element={<Loading/>}/>
+                <Route path="profile" element={is_authenticated ? <Profile /> : <Navigate replace to="/"/>} />
+                <Route path="travels" element={is_authenticated ? <Travels /> : <Navigate replace to="/"/>} />
+                <Route path="bike/rent" element={is_authenticated ? <Cart /> : <Navigate replace to="/"/>} />
             </Routes>
         </Router>
     );

@@ -8,9 +8,11 @@ import "../layout.scss"
 
 const Signup = () => {
     const dispatch = useDispatch()
-    const { is_loading, is_authenticated, error } = useSelector(state => state.auth)
+    const { is_loading, is_authenticated,message } = useSelector(state => state.auth)
     const [formData, setFormData] = useState({
-        username: "",
+        firstname: "",
+        lastname: "",
+        nationalId:"",
         email: "",
         confirmPassword:'',
         password:""
@@ -21,9 +23,10 @@ const Signup = () => {
         dispatch(signUp(formData))
         console.log('done')
     }
-    if(is_authenticated) return <Navigate to="/" /> 
+    if (is_authenticated) return <Navigate to="/" /> 
+    if (message) return <Navigate to="/loading-page"/>
   return (
-      <div className='w-screen h-screen bg-black overflow-hidden text-gray-50 font-gotham'>
+      <div className='w-screen h-auto bg-black overflow-hidden text-gray-50 font-gotham'>
           {/* welcome note */}
           <div className='w-full text-lg lg:text-2xl font-bold flex items-center justify-between px-3 lg:px-24 py-5'>
               <div>
@@ -43,15 +46,25 @@ const Signup = () => {
           <div className='w-full flex justify-center pt-3'>
               <form
                   onSubmit={handleSubmit}
-                  className='w-11/12 md:w-9/12 lg:w-7/12 flex flex-col justify-center items-center glass rounded-lg'>
+                  className='w-11/12 md:w-9/12 lg:w-7/12 flex flex-col justify-center items-center mb-14 glass rounded-lg'>
                   <div className='w-11/12 md:w-10/12 lg:w-8/12 flex flex-col justify-center lg:px-10 py-3'>
                       <label>
-                          User Name
+                          firstname
                       </label>
                       <input
-                          name='username'
-                          placeholder='user name'
-                          onChange={(event) => setFormData({...formData,username:event.target.value})}
+                          name='firstname'
+                          placeholder='firstname'
+                          onChange={(event) => setFormData({...formData,firstname:event.target.value})}
+                          className='w-full outline-none rounded-md p-2 border-none text-black' />
+                  </div>
+                  <div className='w-11/12 md:w-10/12 lg:w-8/12 flex flex-col justify-center lg:px-10 py-3'>
+                      <label>
+                          lastname
+                      </label>
+                      <input
+                          name='lastname'
+                          placeholder='lastname'
+                          onChange={(event) => setFormData({...formData,lastname:event.target.value})}
                           className='w-full outline-none rounded-md p-2 border-none text-black' />
                   </div>
                   <div className='w-11/12 md:w-10/12 lg:w-8/12 flex flex-col justify-center lg:px-10 py-3'>
@@ -63,6 +76,16 @@ const Signup = () => {
                           type='email'
                           placeholder='email'
                           onChange={(event) => setFormData({...formData,email:event.target.value})}
+                          className='w-full outline-none rounded-md p-2 border-none text-black' />
+                  </div>
+                  <div className='w-11/12 md:w-10/12 lg:w-8/12 flex flex-col justify-center lg:px-10 py-3'>
+                      <label>
+                          National Id
+                      </label>
+                      <input
+                          name='nationalId'
+                          placeholder='national Id'
+                          onChange={(event) => setFormData({...formData,nationalId:event.target.value})}
                           className='w-full outline-none rounded-md p-2 border-none text-black' />
                   </div>
                   <div className='w-11/12 md:w-10/12 lg:w-8/12 flex flex-col justify-center lg:px-10 py-3'>

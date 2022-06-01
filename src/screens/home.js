@@ -26,13 +26,15 @@ const Home = () => {
             setNavScroll(true);
           }
         };
+        localStorage.removeItem('cartItems')
     }, []);
     
     useEffect(() => {
         dispatch(fetchLocation())
     }, [dispatch])
     
-    const {username,is_authenticated} = useSelector(state => state.auth)
+    const { username, is_authenticated, user_role } = useSelector(state => state.auth)
+    console.log(user_role)
     return (
         <div className="w-screen h-auto relative">
             <div className="w-full min-h-screen bg-black text-gray-50  font-gotham absolute">
@@ -54,7 +56,7 @@ const Home = () => {
                         <Search/>
                         <Map/>
                     </div>
-                    <Driver/>
+                    <Driver username={username } />
                 </div>
                 <Footer/>
             </div>
@@ -62,6 +64,7 @@ const Home = () => {
                 <div className="absolute z-50">
                     <Sidebar
                         sidebar={sidebar}
+                        user={user_role}
                         setSidebar={setSidebar}/>
                 </div>
             )}

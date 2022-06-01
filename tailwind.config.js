@@ -3,8 +3,7 @@ module.exports = {
         // Example content paths...
         './public/**/*.html',
         './src/**/*.{js,jsx,ts,tsx,vue}',
-      ],
-  darkMode: false, // or 'media' or 'class'
+      ], // or 'media' or 'class'
   theme: {
       extend: {
           fontFamily: {
@@ -19,9 +18,6 @@ module.exports = {
               '2': '2 2 0%'
           },
       },
-  },
-  variants: {
-      extend: {},
   },
   plugins: [],
 }

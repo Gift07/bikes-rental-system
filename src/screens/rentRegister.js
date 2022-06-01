@@ -15,10 +15,8 @@ const Register = () => {
     const { userId } = useSelector(state => state.auth)
     const handleSubmit = (event) => {
         event.preventDefault()
-        dispatch(createLocation(formData))
+        dispatch(createLocation({ ...formData,owner:userId }))
         dispatch(setStaff(userId))
-        
-        return <Navigate to="/profile" />
     }
   return (
       <div className="w-screen min-h-screen bg-black font-gotham text-gray-50">

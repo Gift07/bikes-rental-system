@@ -1,8 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://bikes-rent.herokuapp.com/api/";
-const refresh_token =
-  typeof window !== "undefined" && localStorage.getItem("refreshToken");
+const baseURL = "https://bikes-rent.herokuapp.com/api/";
 
 const axiosInstance = axios.create({
   baseURL,

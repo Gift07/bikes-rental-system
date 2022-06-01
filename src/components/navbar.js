@@ -1,11 +1,17 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { AiOutlineMenu } from "react-icons/ai"
-import {useSelector} from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { logOut } from '../store/actions/auth'
 import Logo from "../images/Logo.png"
 
 const Navbar = ({ is_authenticated, navScroll, sidebar, setSidebar }) => {
-    const {username} = useSelector(state => state.auth)
+    const { firstname,lastname } = useSelector(state => state.auth)
+    const dispatch = useDispatch()
+    const handleClick = () => {
+        dispatch(logOut())
+        window.location.reload()
+    }
     const handleSidebar = () => {
         setSidebar(!sidebar)
     }
@@ -42,12 +48,20 @@ const Navbar = ({ is_authenticated, navScroll, sidebar, setSidebar }) => {
                     }
                     {navScroll && (
                           <>
-                              {is_authenticated ? (
+                          {is_authenticated ? (
+                                    <>
                                       <Link to="/profile">                                        
                                         <div className="w-12 h-12 rounded-full bg-gray-600 text-xl flex items-center justify-center">
-                                            {username.charAt(0).toUpperCase()}
+                                          {firstname.charAt(0).toUpperCase()}
+                                          {lastname.charAt(0).toUpperCase()}
                                         </div>
-                                      </Link>
+                                  </Link>
+                                  <button
+                                    onClick={handleClick}
+                                    className="px-8 py-2 rounded-lg text-gray-50 font-gotham bg-red-600 ml-4 mt-3">
+                                        Logout
+                                    </button>
+                                      </>
                                   ): (                                      
                                     <Link to="/user/sign-in">                            
                                         <button className='bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-500'>

@@ -30,19 +30,19 @@ const LocationId = () => {
   }, [dispatch,params.id])
 
     
-    const {username,is_authenticated} = useSelector(state => state.auth)
+    const {firstname,is_authenticated} = useSelector(state => state.auth)
   return (
       <div className='w-screen min-h-screen bg-black overflow-hidden text-gray-50 font-gotham'>
             <Navbar
                 navScroll={navScroll}
-                username={username}
+                firstname={firstname}
                 is_authenticated={is_authenticated} 
             />
           {/* top area */}
           <div className='relative top-14'>
              <Header
                     navScroll={navScroll}
-                    username={username}
+                    firstname={firstname}
                     is_authenticated={is_authenticated} />
             {/* map with kimara station */}
             <div className='w-full flex items-center justify-center py-10'>

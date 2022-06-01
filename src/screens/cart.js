@@ -19,6 +19,7 @@ const Cart = () => {
     const [location, setLocation] = useState(cart.bikeLocation.locationId)
     const [locationName,setLoctionName] = useState(cart.bikeLocation.locationName)
     const [selected, setSelected] = useState()
+    console.log(cart.bikeLocation.locationName)
     const routeTime = [
         {
             time: 1,
@@ -44,8 +45,10 @@ const Cart = () => {
 
     const handleClick = () => {
         setCheckout(!checkout)
+        
         // if(is_authenticated) return <Navigate to="/" /> 
     }
+    console.log(cart)
     return (
       <div className="relative w-screen min-h-screen bg-black ">
         <div className='w-full h-auto bg-black text-gray-50 font-gotham absolute'>
@@ -82,9 +85,9 @@ const Cart = () => {
                         <div className='w-full h-full'>
                             <div className='px-4 lg:pt-4'>
                                 <p className=' flex items-center'>
-                                        from : <p className='px-2 py-1 rounded-lg bg-green-400 ml-4'>{ cart.bikeLocation.locationName}</p>
+                                        from : <p className='px-2 py-1 rounded-lg bg-green-400 ml-4'>{ cart.bikeLocation[0].locationName}</p>
                                 </p>
-                                <p
+                                {/* <p
                                  className=' flex items-center mt-2'>
                                         Estimated time :
                                     <p className='px-2 py-1 rounded-lg text-gray-50 ml-4'>
@@ -101,10 +104,10 @@ const Cart = () => {
                                           </select>
                                         </div>          
                                      </p>
-                                </p>
-                                <p className=' flex items-center text-lg font-medium mt-2'>
+                                </p> */}
+                                {/* <p className=' flex items-center text-lg font-medium mt-2'>
                                         {price}<p className='font-bold'>Tzs</p>
-                                </p>
+                                </p> */}
                                 <div className='w-full flex items-center justify-center mt-2 lg:mt-6'>
                                     <button
                                         onClick={handleClick}

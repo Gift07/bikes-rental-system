@@ -43,30 +43,38 @@ const Sidebar = ({sidebar,setSidebar}) => {
                 )}
               <div className="w-screen flex flex-col justify-start items-start">
                   <ul>
+                          <Link to="/">                             
                       <li className="flex items-center justify-center px-4 py-2 font-light text-xl">
-                          <AiOutlineHome />
-                          <p className="ml-4">
-                            Home
-                          </p>
+                            <AiOutlineHome />
+                            <p className="ml-4">
+                                Home
+                            </p>
                       </li>
+                          </Link>
+                          <Link to="/travels">                        
                       <li className="flex items-center justify-center px-4 py-2  font-light text-xl">
-                          <MdCardTravel />
-                          <p className="ml-4">
-                            Travels
-                          </p>
+                            <MdCardTravel />
+                            <p className="ml-4">
+                                Travels
+                            </p>
                       </li>
+                          </Link>
+                          <Link to="/locations">                             
                       <li className="flex items-center justify-center px-4 py-2 ml-4 font-light text-xl">
-                          <IoLocationOutline />
-                          <p className="ml-4">
-                            Locations
-                          </p>
+                            <IoLocationOutline />
+                            <p className="ml-4">
+                                Locations
+                            </p>
                       </li>
-                      <li className="flex items-center justify-center px-4 py-2 font-light text-xl">
-                          <FaHandshake/>
-                          <p className="ml-4">
-                            join us
-                          </p>
-                          </li>
+                          </Link>
+                          <Link to="/rental/register">                            
+                            <li className="flex items-center justify-center px-4 py-2 font-light text-xl">
+                            <FaHandshake/>
+                            <p className="ml-4">
+                                join us
+                            </p>
+                        </li>
+                     </Link>
                   </ul>
                   {is_authenticated ? (
                       <button

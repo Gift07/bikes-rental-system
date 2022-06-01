@@ -21,7 +21,7 @@ const Card = ({ bike, location }) => {
   }
   if(cart !== null) return <Navigate to="/bike/rent"/>
   return (
-    <div className='w-64 h-96 bg-red-50 rounded-md mb-5'>
+    <div key={bike.name} className='w-64 h-96 bg-red-50 rounded-md mb-5'>
       <div className="w-full flex justify-center">
         <img
           className='w-11/12 rounded-md h-52 object-cover mt-2'
@@ -35,7 +35,7 @@ const Card = ({ bike, location }) => {
         {location.location?.name}
         </p>
         <p className='font-bold text-md px-4 text-gray-800 mt-1'>
-          {bike.owner.username}
+          {bike.owner.firstname}
         </p>
       </div>
       <div>
