@@ -18,7 +18,7 @@ const Landing = () => {
               </p>
               <div className="px-4 md:px-8 lg:px-10 mt-2 lg:mt-3">
                   <Link to="/user/sign-up">
-                    <button className="px-6 md:px-8 lg:px-8 py-2 bg-purple-600 rounded-md">
+                    <button className="px-6 md:px-8 lg:px-8 py-2 bg-purple-600 hover:bg-blue-700 active:bg-blue-800 rounded-md">
                         Get started
                     </button>
                   </Link>

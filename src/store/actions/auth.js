@@ -8,7 +8,7 @@ export const signIn = (body) => async(dispatch) => {
             
         })
         const { data } = await axiosInstance.post('auth/sign-in', body)
-        console.log(data)
+
         dispatch({
             type: actionTypes.SIGN_IN_SUCCESS,
             payload: data,
@@ -50,7 +50,9 @@ export const verifyUser = (body) => async (dispatch) => {
         dispatch({
           type: actionTypes.USER_VERIFY_REQUEST
         })  
-        const { data } = await axiosInstance.post("verify-phone", body)
+        console.log("loading")
+        const data = await axiosInstance.post('auth/verify-phone',body)
+        console.log("loading false")
         dispatch({
             type: actionTypes.USER_VERIFY_SUCCESS,
             payload: data,
