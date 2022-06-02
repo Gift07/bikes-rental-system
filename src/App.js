@@ -27,7 +27,7 @@ function App() {
                 <Route path="rental/register" element={<Register />} />
                 <Route path='user/sign-in' element={<Signin />} />
                 <Route path="user/sign-up" element={<Signup />} />
-                <Route path='loading-page' element={<Loading/>}/>
+                <Route path='verify-phone' element={<Loading/>}/>
                 <Route path="profile" element={is_authenticated ? <Profile /> : <Navigate replace to="/"/>} />
                 <Route path="travels" element={is_authenticated ? <Travels /> : <Navigate replace to="/"/>} />
                 <Route path="bike/rent" element={is_authenticated ? <Cart /> : <Navigate replace to="/"/>} />

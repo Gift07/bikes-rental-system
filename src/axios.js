@@ -7,5 +7,11 @@ const axiosInstance = axios.create({
   timeout: 5000,
 });
 
+axiosInstance.interceptors.request.use((req) => {
+  if(localStorage.getItem('token') ){
+      req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('token')).token}`
+  }
+  return req
+})
 
 export default axiosInstance;

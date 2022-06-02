@@ -13,7 +13,7 @@ const Signup = () => {
         firstname: "",
         lastname: "",
         nationalId:"",
-        email: "",
+        phone: "",
         confirmPassword:'',
         password:""
     })
@@ -24,7 +24,7 @@ const Signup = () => {
         console.log('done')
     }
     if (is_authenticated) return <Navigate to="/" /> 
-    if (message) return <Navigate to="/loading-page"/>
+    if (message) return <Navigate to="/verify-phone"/>
   return (
       <div className='w-screen h-auto bg-black overflow-hidden text-gray-50 font-gotham'>
           {/* welcome note */}
@@ -69,13 +69,12 @@ const Signup = () => {
                   </div>
                   <div className='w-11/12 md:w-10/12 lg:w-8/12 flex flex-col justify-center lg:px-10 py-3'>
                       <label>
-                          email
+                          phone
                       </label>
                       <input
-                          name='username'
-                          type='email'
-                          placeholder='email'
-                          onChange={(event) => setFormData({...formData,email:event.target.value})}
+                          name='phone'
+                          placeholder='phone'
+                          onChange={(event) => setFormData({...formData,phone:event.target.value})}
                           className='w-full outline-none rounded-md p-2 border-none text-black' />
                   </div>
                   <div className='w-11/12 md:w-10/12 lg:w-8/12 flex flex-col justify-center lg:px-10 py-3'>

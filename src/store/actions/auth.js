@@ -30,8 +30,9 @@ export const signUp = (body) => async (dispatch) => {
             type: actionTypes.SIGN_UP_REQUEST,      
         }) 
 
-        const data = await axiosInstance.post("auth/sign-up", body)
+        const { data } = await axiosInstance.post("auth/sign-up", body)
         console.log(data)
+        localStorage.setItem('token', data.token)
         dispatch({
             type: actionTypes.SIGN_UP_SUCCESS,
             payload:data,
@@ -43,6 +44,27 @@ export const signUp = (body) => async (dispatch) => {
         })
     }
 } 
+
+export const verifyUser = (body) => async (dispatch) => {
+    try {
+        dispatch({
+          type: actionTypes.USER_VERIFY_REQUEST
+        })  
+        const { data } = await axiosInstance.post("verify-phone", body)
+        dispatch({
+            type: actionTypes.USER_VERIFY_SUCCESS,
+            payload: data,
+        })
+        localStorage.setItem(
+            "accessToken",data.accessToken
+        );
+    } catch (error) {
+        dispatch({
+            type: actionTypes.USER_VERIFY_FAILED,
+            payload:error
+        })
+    }
+}
 
 // load user
 export const loadUser = () => {

@@ -18,6 +18,7 @@ const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.SIGN_UP_REQUEST:
         case actionTypes.SIGN_IN_REQUEST:
+        case actionTypes.USER_VERIFY_REQUEST:
         case actionTypes.USER_UPDATE_ROLE_REQUEST:
             return {
                 ...state,
@@ -27,9 +28,10 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 is_loading: false,
-                message:action.payload
+                message:action.payload.message
             }
         case actionTypes.SIGN_IN_SUCCESS:
+        case actionTypes.USER_VERIFY_SUCCESS:
         case actionTypes.USER_LOADED_SUCCESSFULL:
         case actionTypes.USER_UPDATE_ROLE_SUCCESS:
             if (action.payload.accessToken) {          
@@ -51,6 +53,7 @@ const authReducer = (state = initialState, action) => {
             }
         case actionTypes.SIGN_IN_FAIL:
         case actionTypes.SIGN_UP_FAIL:
+        case actionTypes.USER_VERIFY_FAILED:
         case actionTypes.USER_UPDATE_ROLE_FAILED:
             return {
                 ...state,
