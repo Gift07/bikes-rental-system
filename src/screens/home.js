@@ -11,6 +11,7 @@ import Driver from '../components/Home/driver';
 import Search from '../components/Home/search';
 import Sidebar from '../components/sidebar';
 import Footer from '../components/footer';
+import { loadUser } from '../store/actions/auth';
 
 
 const Home = () => {
@@ -31,6 +32,7 @@ const Home = () => {
     
     useEffect(() => {
         dispatch(fetchLocation())
+        dispatch(loadUser())
     }, [dispatch])
     
     const { username, is_authenticated, user_role } = useSelector(state => state.auth)

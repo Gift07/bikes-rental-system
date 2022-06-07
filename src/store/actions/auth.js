@@ -30,7 +30,7 @@ export const signUp = (body) => async (dispatch) => {
             type: actionTypes.SIGN_UP_REQUEST,      
         }) 
 
-        const { data } = await axiosInstance.post("auth/sign-up", body)
+        const { data }  = await axiosInstance.post("auth/sign-up", body)
         console.log(data)
         localStorage.setItem('token', data.token)
         dispatch({
@@ -51,7 +51,8 @@ export const verifyUser = (body) => async (dispatch) => {
           type: actionTypes.USER_VERIFY_REQUEST
         })  
         console.log("loading")
-        const data = await axiosInstance.post('auth/verify-phone',body)
+        const { data } = await axiosInstance.patch('auth/verify-phone', body)
+    
         console.log("loading false")
         dispatch({
             type: actionTypes.USER_VERIFY_SUCCESS,

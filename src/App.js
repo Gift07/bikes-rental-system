@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useSelector,useDispatch } from 'react-redux';
+import {useEffect} from 'react'
+import { useSelector, useDispatch } from 'react-redux';
 import Home from './screens/home';
 import { BrowserRouter as Router, Route, Routes,Navigate } from "react-router-dom"
 import { loadUser } from "./store/actions/auth"
@@ -13,12 +13,7 @@ import Cart from './screens/cart';
 import Loading from './screens/loading';
 
 function App() {
-    const dispatch = useDispatch()
-    const {is_authenticated} = useSelector(state => state.auth)
-  
-    useEffect(() => {
-      dispatch(loadUser())
-    }, [dispatch])
+    const { is_authenticated } = useSelector(state => state.auth)
     return (
         <Router>
             <Routes>

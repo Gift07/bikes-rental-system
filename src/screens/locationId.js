@@ -7,6 +7,7 @@ import Navbar from '../components/navbar'
 import Header from '../components/header'
 import Bike from "../components/Location/bike"
 import { fetchLocationId } from '../store/actions/location'
+import {loadUser} from "../store/actions/auth"
 
 const LocationId = () => {
     const params = useParams()
@@ -27,8 +28,11 @@ const LocationId = () => {
   useEffect(() => {
        console.log("this useEffect")
         dispatch(fetchLocationId(params.id))
-  }, [dispatch,params.id])
-
+  }, [dispatch, params.id])
+  
+  useEffect(() => {
+    dispatch(loadUser())
+  },[])
     
     const {firstname,is_authenticated} = useSelector(state => state.auth)
   return (

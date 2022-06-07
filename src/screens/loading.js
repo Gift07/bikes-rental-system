@@ -1,4 +1,4 @@
-import jwtDecode from 'jwt-decode'
+import jwtDecode from "jwt-decode"
 import React from 'react'
 import { useSelector, useDispatch } from "react-redux"
 import { Navigate } from "react-router-dom"
@@ -10,9 +10,9 @@ const Loading = () => {
 
   const [verificationCode, setVerificationCode] = React.useState("")
   const [userId,setUserId] = React.useState("")
-  React.useEffect(() => {
-    const token = localStorage.getItem('token')
-    if (token) {
+  React.useEffect(() => { 
+    if (localStorage.getItem('token')) {
+      const token = localStorage.getItem('token')
       const user = jwtDecode(token)
       setUserId(user._id)
     }

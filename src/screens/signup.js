@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import {useDispatch, useSelector} from "react-redux"
 import { HiOutlineArrowSmRight } from "react-icons/hi"
 import { Link } from 'react-router-dom'
 import { Navigate } from 'react-router-dom'
-import { signUp } from '../store/actions/auth'
+import { signUp, loadUser } from '../store/actions/auth'
 import "../layout.scss"
 
 const Signup = () => {
@@ -24,7 +24,12 @@ const Signup = () => {
         console.log('done')
     }
     if (is_authenticated) return <Navigate to="/" /> 
-    if (message) return <Navigate to="/verify-phone"/>
+    if (message) return <Navigate to="/verify-phone" />
+
+    useEffect(() => {
+        dispatch(loadUser())
+    }, [dispatch])
+    
   return (
       <div className='w-screen h-auto bg-black overflow-hidden text-gray-50 font-gotham'>
           {/* welcome note */}
