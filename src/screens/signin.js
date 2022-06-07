@@ -17,10 +17,10 @@ const Signin = () => {
         event.preventDefault()
         dispatch(signIn(formData))
     }
-    if (is_authenticated) return <Navigate to="/" /> 
     useEffect(() => {
         dispatch(loadUser())
     },[dispatch])
+    if (is_authenticated) return <Navigate to="/" /> 
   return (
       <div className='w-screen h-screen bg-black overflow-hidden text-gray-50 font-gotham'>
           {/* welcome note */}

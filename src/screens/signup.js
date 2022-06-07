@@ -23,13 +23,13 @@ const Signup = () => {
         dispatch(signUp(formData))
         console.log('done')
     }
-    if (is_authenticated) return <Navigate to="/" /> 
-    if (message) return <Navigate to="/verify-phone" />
-
+    
     useEffect(() => {
         dispatch(loadUser())
     }, [dispatch])
-    
+
+    if (is_authenticated) return <Navigate to="/" /> 
+    if (message) return <Navigate to="/verify-phone" />
   return (
       <div className='w-screen h-auto bg-black overflow-hidden text-gray-50 font-gotham'>
           {/* welcome note */}
