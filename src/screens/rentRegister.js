@@ -12,7 +12,8 @@ const Register = () => {
     })
     const dispatch = useDispatch()
     const { is_loading } = useSelector(state => state.location)
-    const { userId } = useSelector(state => state.auth)
+    const { userId ,user_role} = useSelector(state => state.auth)
+
     const handleSubmit = (event) => {
         event.preventDefault()
         dispatch(createLocation({ ...formData,owner:userId }))
@@ -20,7 +21,9 @@ const Register = () => {
     }
     useEffect(() => {
         dispatch(loadUser())
-    },[dispatch])
+    }, [dispatch])
+
+    if (user_role === 'STAFF') return <Navigate to="/"/>
   return (
       <div className="w-screen min-h-screen bg-black font-gotham text-gray-50">
           <div className='w-full flex items-center'>
