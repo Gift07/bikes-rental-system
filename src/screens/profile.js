@@ -7,7 +7,7 @@ import "../layout.scss"
 import { fetchLocation } from '../store/actions/location'
 
 const Profile = () => {
-  const { username, email, user_role, userId } = useSelector(state => state.auth)
+  const { firstname, email, user_role, userId } = useSelector(state => state.auth)
   const { locations } = useSelector(state => state.location)
   const myLocation = locations.filter((location) => location.owner === userId)
   console.log(myLocation)
@@ -35,11 +35,11 @@ const Profile = () => {
           <div className="flex justify-center">          
             {/* user information */}
               <div className="mr-4 w-16 h-16 lg:w-28 lg:h-28 rounded-full flex items-center justify-center bg-gray-600 text-3xl">
-              {username.charAt(0).toUpperCase()}
+              {firstname.charAt(0).toUpperCase()}
               </div>
               <div className="overflow-hidden ml-4 mt-2">
                 <p className="text-lg font-bold pt-1">
-                  {username}
+                  {firstname}
                 </p>
                 <p className="text-xs font-light pt-1">
                   Dar es salaam,Tanzania

@@ -10,7 +10,7 @@ import "../layout.scss"
 
 const Sidebar = ({sidebar,setSidebar}) => {
     const dispatch = useDispatch()
-    const { is_authenticated,username,email } = useSelector(state => state.auth)
+    const { is_authenticated,firstname,email } = useSelector(state => state.auth)
     const handleClick = () => {
         dispatch(logOut())
         window.location.reload()
@@ -29,11 +29,11 @@ const Sidebar = ({sidebar,setSidebar}) => {
                 {is_authenticated && (
                 <div className="w-full flex items-center px-4 py-3">
                         <div className="w-12 h-12 rounded-full capitalize bg-gray-700 text-3xl font-light text-gray-50 flex items-center justify-center">
-                            {username[0]}
+                            {firstname[0]}
                         </div>
                         <div className="ml-4">
                         <p>
-                            {username}
+                            {firstname}
                         </p>
                         <p>
                             {email}
