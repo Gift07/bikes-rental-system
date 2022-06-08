@@ -9,8 +9,14 @@ import { fetchLocation } from '../store/actions/location'
 const Profile = () => {
   const { firstname, email, user_role, userId } = useSelector(state => state.auth)
   const { locations } = useSelector(state => state.location)
-  const myLocation = locations.filter((location) => location.owner === userId)
+
+  console.log(locations[0])
+  console.log(userId)
+  // console.log(locations[1].owner === userId)
+
+  const myLocation = locations.find((location) => (location.owner === userId))
   console.log(myLocation)
+
   const dispatch = useDispatch()
   const [formData, setFormData] = useState({
     owner:userId,
@@ -65,7 +71,7 @@ const Profile = () => {
                       <input
                           name='name'
                           placeholder='name'
-                          onChange={(event) => setFormData({...FormData,name:event.target.value})}
+                          onChange={(event) => setFormData({...formData,name:event.target.value})}
                           className='w-full outline-none rounded-md p-2 border-none text-black' />
                   </div>
                   <div className='w-11/12 lg:w-8/12 flex flex-col justify-center lg:px-10 py-5'>
@@ -75,7 +81,7 @@ const Profile = () => {
                       <input
                           name='image'
                           placeholder='image'
-                          onChange={(event) => setFormData({...FormData,imageUrl:event.target.value})}
+                          onChange={(event) => setFormData({...formData,imageUrl:event.target.value})}
                           className='w-full outline-none rounded-md p-2 border-none text-black' />
                   </div>
                   <div className='w-11/12 lg:w-8/12 flex flex-col justify-center lg:px-10 py-5'>
