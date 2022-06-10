@@ -29,6 +29,7 @@ const Cart = () => {
         dispatch(rentBike({ bike, location, owner, renter: userId })) 
         dispatch(createMyRent({ bike, location, user: userId }))
         localStorage.removeItem("cart")
+        window.location.reload()
     }
     
     return (

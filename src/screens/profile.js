@@ -6,6 +6,7 @@ import "../layout.scss"
 import { fetchRent } from '../store/actions/rent'
 import { NavLink, Outlet } from "react-router-dom"
 import Checkout from "../screens/checkout"
+import {fetchMyRents} from '../store/actions/myrents'
 
 const Profile = () => {
   const { firstname, email, user_role, userId } = useSelector(state => state.auth)
@@ -20,6 +21,7 @@ const Profile = () => {
   useEffect(() => {
     dispatch(loadUser())
     dispatch(fetchRent())
+    dispatch(fetchMyRents())
   }, [dispatch])
   
   return (
