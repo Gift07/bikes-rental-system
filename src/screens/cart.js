@@ -28,6 +28,8 @@ const Cart = () => {
     const handleClick = () => {
         dispatch(rentBike({ bike, location, owner, renter: userId })) 
         dispatch(createMyRent({ bike, location, user: userId }))
+        dispatch(rentBike(bike))
+        alert("Thank you for renting check your profile to time taken")
         localStorage.removeItem("cart")
         window.location.reload()
     }

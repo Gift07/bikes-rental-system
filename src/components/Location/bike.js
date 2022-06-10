@@ -35,9 +35,15 @@ const Bike = ({ bike, location }) => {
                 </div>
                 <div>
                 <div>
+                  {bike.is_rented ? (
+                   <p className='w-20 ml-2 flex items-center justify-center text-gray-50  bg-red-600 text-sm rounded-lg'>
+                    Taken
+                  </p>
+                  ):(                   
                   <p className='w-20 ml-2 flex items-center justify-center text-gray-50  bg-blue-600 text-sm rounded-lg'>
                     Available
                   </p>
+                  )}
                 </div>
                 </div>
                   <div className='w-full flex items-center justify-center mt-2'>                                 

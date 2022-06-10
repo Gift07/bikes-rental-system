@@ -55,3 +55,31 @@ export const fetchBikeId = (id) => async (dispatch) => {
         })
     }
 }
+
+export const rentBike = (id) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axiosInstance.patch("/bike/rent", { id }) 
+            dispatch({
+                type: constants.RENT_THE_BIKE,
+                payload:data
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export const returnBike = (id) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axiosInstance.patch("/bike/return", { id }) 
+            dispatch({
+                type: constants.RETURN_THE_BIKE,
+                payload:data
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}

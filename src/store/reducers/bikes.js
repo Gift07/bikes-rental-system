@@ -5,6 +5,7 @@ const initialState = {
     bikes: [],
     bike: null,
     error: null,
+    message:"",
     message:null,
 }
 
@@ -43,6 +44,13 @@ const bikesReducer = (state = initialState, action) => {
                 ...state,
                 is_loading: false,
                 error:action.payload
+            }
+        case constants.RENT_THE_BIKE:
+        case constants.RETURN_THE_BIKE:
+            return {
+                ...state,
+                is_loading: false,
+                message:action.payload
             }
         default:
             return state;
