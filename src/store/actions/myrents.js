@@ -37,3 +37,7 @@ export const fetchMyRents = () => async (dispatch) => {
         })
     }
 }
+
+export const deleteMyrents = () => async (dispatch) => {
+    cnsole.log("hello")
+}

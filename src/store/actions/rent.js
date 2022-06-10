@@ -40,7 +40,7 @@ export const fetchRent = () => async (dispatch) => {
     }
 }
 
-export const returnBike = async(body) => {
+export const returnBike = (body) => async (dispatch) =>{
     try {
         dispatch({
             type:constants.RETURN_BIKE_REQUEST

@@ -1,7 +1,7 @@
 import {useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux"
 import { fetchMyRents } from "../../store/actions/myrents"
-import bike1 from "../../images/bike1.jpg"
+import {returnBike} from "../../store/actions/rent"
 import moment from "moment"
 
 const RentedBikes = () => {
