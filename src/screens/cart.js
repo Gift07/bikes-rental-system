@@ -4,51 +4,33 @@ import { Link,Navigate } from 'react-router-dom'
 import bike3 from "../images/bike3.jpg"
 import Map from '../components/cart/map'
 import { fetchUserLocation } from "../store/actions/map"
-import Checkout from "./checkout.js"
+import Checkout from "./checkout"
+import {rentBike } from "../store/actions/rent"
+
 import "../layout.scss"
+import { createMyRent } from '../store/actions/myrents'
 
 const Cart = () => {
     const dispatch = useDispatch()
     const { lat, long } = useSelector(state => state.map)
     const { username,userId } = useSelector(state => state.auth)
-    const [checkout, setCheckout] = useState(false)
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cartItems')))
-    const [time, SetTime] = useState(1)
-    const [price, setPrice] = useState("2")
-    const [bike, setBike] = useState(cart.bikeId._id)
-    const [location, setLocation] = useState(cart.bikeLocation.locationId)
-    const [locationName,setLoctionName] = useState(cart.bikeLocation.locationName)
-    const [selected, setSelected] = useState()
-    console.log(cart.bikeLocation.locationName)
-    const routeTime = [
-        {
-            time: 1,
-            price: 2
-        },
-        {
-            time: 2,
-            price: 4,
-        },
-        {
-            time: 3,
-            price: 8
-        },
-        {
-            time: 4,
-            price: 10
-        },
-    ]
+
+    const bike = cart.bikeId._id
+    const location = cart.bikeLocation[0].locationId
+    const owner = cart.bikeId.owner._id
+
     useEffect(() => {
         dispatch(fetchUserLocation())
         setCart(JSON.parse(localStorage.getItem('cartItems')))
     }, [dispatch])
 
     const handleClick = () => {
-        setCheckout(!checkout)
-        
-        // if(is_authenticated) return <Navigate to="/" /> 
+        dispatch(rentBike({ bike, location, owner, renter: userId })) 
+        dispatch(createMyRent({ bike, location, user: userId }))
+        localStorage.removeItem("cart")
     }
-    console.log(cart)
+    
     return (
       <div className="relative w-screen min-h-screen bg-black ">
         <div className='w-full h-auto bg-black text-gray-50 font-gotham absolute'>
@@ -120,20 +102,7 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
-            </div>
-            {checkout && (
-                <div className="fixed top-0 z-30 w-screen h-screen flex flex-col items-center justify-center glass">
-                    <Checkout
-                        checkout={checkout}
-                        setCheckout={setCheckout}
-                        time={time}
-                        location={locationName}
-                        from={location}
-                        price={price}
-                        bike={cart.bikeId._id}
-                    />
-                </div>
-            )}
+        </div>
       </div>
   )
 }

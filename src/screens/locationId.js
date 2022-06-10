@@ -51,9 +51,9 @@ const LocationId = () => {
             {/* map with kimara station */}
             <div className='w-full flex items-center justify-center py-10'>
                     <div className='w-full h-64 md:h-96 lg:h-96 bg-yellow-300 rounded-md'>
-                      {/* <img
+                      <img
                           className='w-full h-full object-cover'
-                          src={location.location?.imageUrl} alt={location.location.name} /> */}
+                          src={location.location?.imageUrl} alt="image" />
                     </div>
             </div>
             {/* lister */}

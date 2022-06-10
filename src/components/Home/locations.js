@@ -12,7 +12,7 @@ SwiperCore.use([Navigation]);
 
 const Locations = ({ locations, is_loading, error }) => {
   return (
-            <div className="w-full md:px-10 lg:px-20 bg-black py-5 flex flex-col">
+        <div className="w-full md:px-10 lg:px-20 bg-black py-5 flex flex-col">
                 {/* lister */}
                 <div className="w-full px-4 flex items-center justify-between my-4">
                     <p className="font-bold text-md lg:text-xl">

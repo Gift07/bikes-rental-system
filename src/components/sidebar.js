@@ -27,10 +27,12 @@ const Sidebar = ({sidebar,setSidebar}) => {
                   </span>
               </div>
                 {is_authenticated && (
-                <div className="w-full flex items-center px-4 py-3">
+                      <Link to ="/profile">
+                  <div className="w-full flex items-center px-4 py-3">
                         <div className="w-12 h-12 rounded-full capitalize bg-gray-700 text-3xl font-light text-gray-50 flex items-center justify-center">
                             {firstname[0]}
                         </div>
+                        
                         <div className="ml-4">
                         <p>
                             {firstname}
@@ -39,7 +41,8 @@ const Sidebar = ({sidebar,setSidebar}) => {
                             {email}
                         </p>
                     </div>
-                 </div>   
+                 </div> 
+                 </Link>     
                 )}
               <div className="w-screen flex flex-col justify-start items-start">
                   <ul>

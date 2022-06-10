@@ -5,6 +5,8 @@ import locationReducer from "./reducers/location";
 import mapReducer from "./reducers/map";
 import cartReducer from './reducers/cart';
 import travelReducer from "./reducers/travel"
+import rentReducer from "./reducers/rent"
+import myRentsReducer from "./reducers/myrent";
 
 const reducer = combineReducers({
     auth: authReducer,
@@ -12,7 +14,9 @@ const reducer = combineReducers({
     bikes: bikesReducer,
     map: mapReducer,
     cart: cartReducer,
-    travel:travelReducer
+    travel: travelReducer,
+    rent: rentReducer,
+    myrents:myRentsReducer
     
 })
 

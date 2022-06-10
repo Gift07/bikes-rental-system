@@ -11,6 +11,11 @@ import Travels from './screens/travels';
 import Register from './screens/rentRegister';
 import Cart from './screens/cart';
 import Loading from './screens/loading';
+import Bike from "./components/profile/bike"
+import RentBike from "./components/profile/rentBike"
+import Profits from "./components/profile/profits"
+import RentedBikes from "./components/profile/rentedBikes"
+
 
 function App() {
     const { is_authenticated } = useSelector(state => state.auth)
@@ -23,7 +28,12 @@ function App() {
                 <Route path='user/sign-in' element={<Signin />} />
                 <Route path="user/sign-up" element={<Signup />} />
                 <Route path='verify-phone' element={<Loading/>}/>
-                <Route path="profile" element={is_authenticated ? <Profile /> : <Navigate replace to="/"/>} />
+                <Route path="profile" element={is_authenticated ? <Profile /> : <Navigate replace to="/" />} >
+                    <Route path="add-bike" element={<Bike />} />
+                    <Route path="rent-bike" element={<RentBike/>} />
+                    <Route path="profits" element={<Profits />} />
+                    <Route path= "rented-bikes" element={<RentedBikes />} />
+                </Route>
                 <Route path="travels" element={is_authenticated ? <Travels /> : <Navigate replace to="/"/>} />
                 <Route path="bike/rent" element={is_authenticated ? <Cart /> : <Navigate replace to="/"/>} />
             </Routes>
