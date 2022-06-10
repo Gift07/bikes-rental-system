@@ -2,6 +2,7 @@ import * as constants from "../constants/bikes"
 import axiosInstance from "../../axios"
 
 export const createBike = (body) => async (dispatch) => {
+    console.log(body)
     try {
         dispatch({
             type:constants.BIKE_CREATE_REQUEST

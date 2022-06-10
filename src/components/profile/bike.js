@@ -13,11 +13,14 @@ const Bike = () => {
 
     useEffect(() => {
         dispatch(fetchLocation())
-    },[dispatch])
+    }, [dispatch])
+  console.log(myLocation)
+
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        dispatch(createBike({name,imageUrl}))
+      dispatch(createBike({ name, imageUrl, location: myLocation._id, owner: userId }))
+      alert("bike added successfull")
     }
 
   return (
