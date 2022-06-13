@@ -69,7 +69,7 @@ const Locations = ({ locations, is_loading, error }) => {
                     <div className='grid grid-cols-2 gap-4 my-3 items-start justify-center'>
                         {locations.map(location => (
                             <div style={{
-                                width:"10rem"
+                                width:"9rem"
                             }} className='h-72 rounded-lg'>
                                 <div>
                                     <img

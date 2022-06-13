@@ -56,7 +56,7 @@ export const fetchBikeId = (id) => async (dispatch) => {
     }
 }
 
-export const rentBike = (id) => {
+export const rentTheBike = (id) => {
     return async (dispatch) => {
         try {
             const { data } = await axiosInstance.patch("/bike/rent", { id }) 
@@ -70,7 +70,7 @@ export const rentBike = (id) => {
     }
 }
 
-export const returnBike = (id) => {
+export const returnTheBike = (id) => {
     return async (dispatch) => {
         try {
             const { data } = await axiosInstance.patch("/bike/return", { id }) 

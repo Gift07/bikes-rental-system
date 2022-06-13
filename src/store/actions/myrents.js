@@ -37,11 +37,3 @@ export const fetchMyRents = () => async (dispatch) => {
         })
     }
 }
-
-export const deleteMyrent = () => async (dispatch) => {
-    try {
-        
-    } catch (error) {
-        
-    }
-}

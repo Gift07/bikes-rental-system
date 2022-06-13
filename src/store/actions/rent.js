@@ -2,6 +2,7 @@ import axiosInstance from "../../axios";
 import * as constants from "../constants/rent"
 
 export const rentBike = (body) => async (dispatch) => {
+    console.log(body)
     try {
         dispatch({
             type: constants.RENT_BIKE_REQUEST
@@ -46,6 +47,7 @@ export const returnBike = (body) => async (dispatch) =>{
             type:constants.RETURN_BIKE_REQUEST
         })
         const { data } = await axiosInstance.patch("rent", body)
+        localStorage.setItem("payment", JSON.stringify(data))
         dispatch({
             type: constants.RETURN_BIKE_SUCCESS,
             payload:data

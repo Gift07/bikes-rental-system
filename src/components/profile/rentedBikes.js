@@ -18,6 +18,7 @@ const RentedBikes = () => {
 
   const handleClick = () => {
     dispatch(returnBike({ bike: me.bike._id, location: me.location._id, renter: me.renter._id }))
+    dispatch(returnTheBike({bike: me.bike._id}))
   }
   
   return (

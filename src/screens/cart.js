@@ -5,7 +5,8 @@ import bike3 from "../images/bike3.jpg"
 import Map from '../components/cart/map'
 import { fetchUserLocation } from "../store/actions/map"
 import Checkout from "./checkout"
-import {rentBike } from "../store/actions/rent"
+import { rentBike } from "../store/actions/rent"
+import {rentTheBike} from "../store/actions/bikes"
 
 import "../layout.scss"
 import { createMyRent } from '../store/actions/myrents'
@@ -28,7 +29,7 @@ const Cart = () => {
     const handleClick = () => {
         dispatch(rentBike({ bike, location, owner, renter: userId })) 
         dispatch(createMyRent({ bike, location, user: userId }))
-        dispatch(rentBike(bike))
+        dispatch(rentTheBike(bike))
         alert("Thank you for renting check your profile to time taken")
         localStorage.removeItem("cart")
         window.location.reload()

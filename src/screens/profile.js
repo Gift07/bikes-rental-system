@@ -11,6 +11,8 @@ import {fetchMyRents} from '../store/actions/myrents'
 const Profile = () => {
   const { firstname, email, user_role, userId } = useSelector(state => state.auth)
   const { locations } = useSelector(state => state.location)
+  const { message } = useSelector(state => state.rent)
+  
   const [checkout, setCheckout] = useState(false)
 
   console.log(locations[0])
@@ -18,11 +20,17 @@ const Profile = () => {
   // console.log(locations[1].owner === userId)
 
   const dispatch = useDispatch()
+
   useEffect(() => {
     dispatch(loadUser())
     dispatch(fetchRent())
     dispatch(fetchMyRents())
   }, [dispatch])
+
+  if (message) {
+    const data = JSON.parse(localStorage.getItem('payment'))
+    setCheckout(!checkout)
+  }
   
   return (
     <div className="w-screen min-h-screen bg-black font-gotham text-gray-50 relative">
@@ -72,14 +80,13 @@ const Profile = () => {
             <Outlet/>
           </div>
       </div>
-      {checkout && (
-                <div className="fixed top-0 z-30 w-screen h-screen flex flex-col items-center justify-center glass">
-                    <Checkout
-                        checkout={checkout}
-                        setCheckout={setCheckout}
-                    />
-                </div>
-            )}
+        {checkout && (
+        <div className="fixed top-0 z-30 w-screen h-screen flex flex-col items-center justify-center glass">
+          <Checkout
+            checkout={checkout}
+            setCheckout={setCheckout}
+            />
+        </div> )}
       </div>
   )
 }

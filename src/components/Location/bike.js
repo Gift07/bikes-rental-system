@@ -46,10 +46,16 @@ const Bike = ({ bike, location }) => {
                   )}
                 </div>
                 </div>
-                  <div className='w-full flex items-center justify-center mt-2'>                                 
-                  <button onClick={handleClick} className="bg-green-500 rounded-md px-2 py-1 ">
+                  <div className='w-full flex items-center justify-center mt-2'>
+                    {bike.is_rented ? (
+                   <button disabled className="bg-green-500 rounded-md px-2 py-1 ">
                     rent the bike
                   </button>
+                    ):(         
+                    <button onClick={handleClick} className="bg-green-500 rounded-md px-2 py-1 ">
+                      rent the bike
+                    </button>
+                    )}                                 
                 </div>
         </div> 
     )
