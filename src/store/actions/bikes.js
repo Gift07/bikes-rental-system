@@ -73,7 +73,7 @@ export const rentTheBike = (id) => {
 export const returnTheBike = (id) => {
     return async (dispatch) => {
         try {
-            const { data } = await axiosInstance.patch("/bike/return", { id }) 
+            const { data } = await axiosInstance.patch("/bike/return", id) 
             dispatch({
                 type: constants.RETURN_THE_BIKE,
                 payload:data

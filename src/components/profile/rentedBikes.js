@@ -1,7 +1,8 @@
 import {useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux"
 import { fetchMyRents } from "../../store/actions/myrents"
-import {returnBike} from "../../store/actions/rent"
+import { returnBike } from "../../store/actions/rent"
+import {returnTheBike} from "../../store/actions/bikes"
 import moment from "moment"
 
 const RentedBikes = () => {
@@ -18,7 +19,7 @@ const RentedBikes = () => {
 
   const handleClick = () => {
     dispatch(returnBike({ bike: me.bike._id, location: me.location._id, renter: me.renter._id }))
-    dispatch(returnTheBike({bike: me.bike._id}))
+    dispatch(returnTheBike({ bike: me.bike._id }))
   }
   
   return (
