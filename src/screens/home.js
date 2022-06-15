@@ -22,6 +22,7 @@ const Home = () => {
     const [checkout, setCheckout] = useState(false)
     const dispatch = useDispatch()
     const {is_loading,locations,error} = useSelector(state => state.location)
+    const { username, is_authenticated, user_role } = useSelector(state => state.auth)
     useEffect(() => {
         window.onscroll = () => {
           if (window.scrollY <= 20) {
@@ -42,7 +43,6 @@ const Home = () => {
 
     if(data) return <Navigate to="/pay"/>
     
-    const { username, is_authenticated, user_role } = useSelector(state => state.auth)
 
     return (
         <div className="w-screen h-auto relative">
