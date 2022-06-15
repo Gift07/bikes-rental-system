@@ -9,26 +9,28 @@ const Checkout = ({ checkout, setCheckout, time, location, price,bike,from }) =>
     const { userId } = useSelector(state => state.auth)
     const { long, lat } = useSelector(state => state.map)
     const { travel_loading } = useSelector(state => state.travel)
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cartItems')))
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem("payment")))
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(fetchUserLocation())
-        setCart(JSON.parse(localStorage.getItem('cartItems')))
+        setCart(JSON.parse(localStorage.getItem("payment")))
     }, [dispatch])
+
     console.log(cart)
+
     const handleClick = () => {
         console.log(from)
         dispatch(createTravel({
             from:location,
             userId,
             time,
-            price:"2",
-            bike,
+            price:cart.price,
         }))
     }
   return (
-      <div className="w-11/12 lg:w-1/2 h-80 bg-red-50 font-gotham text-gray-800 rounded-lg">
+    <div className="w-screen h-screen flex items-center justify-center bg-black">
+        <div className="w-11/12 lg:w-1/2 h-80 bg-red-50 font-gotham text-gray-800 rounded-lg">
           <div className="w-full flex justify-end items-center">
               <div className="px-3 py-1">
                  <AiOutlineClose onClick={()=>setCheckout(!checkout)} size="22px" color="black"/>
@@ -43,13 +45,13 @@ const Checkout = ({ checkout, setCheckout, time, location, price,bike,from }) =>
               </h1>
               <span className>
                   <p className="flex items-center">
-                      Starting point:<div className="bg-green-300 rounded-lg p-1">{location}</div>
+                      Starting time:<div className="bg-green-300 rounded-lg p-1">{cart.startTime}</div>
                   </p>
                   <p className="flex items-center">
-                      Estimated time :<div className="bg-green-300 rounded-lg p-1 mt-2">{ time}hr</div>
+                      Estimated time :<div className="bg-green-300 rounded-lg p-1 mt-2">{ cart.timeTaken}hr</div>
                   </p>
                   <p className="flex items-center">
-                      Price:<div className="bg-green-300 rounded-lg p-1 mt-2">{price} Usd</div>
+                      Price:<div className="bg-green-300 rounded-lg p-1 mt-2">{cart.price} Usd</div>
                   </p>
               </span>
               <span>
@@ -67,6 +69,7 @@ const Checkout = ({ checkout, setCheckout, time, location, price,bike,from }) =>
               </div>
           </div>
       </div>
+    </div>
   )
 }
 

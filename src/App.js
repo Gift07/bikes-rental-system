@@ -15,6 +15,7 @@ import Bike from "./components/profile/bike"
 import RentBike from "./components/profile/rentBike"
 import Profits from "./components/profile/profits"
 import RentedBikes from "./components/profile/rentedBikes"
+import Checkout from './screens/checkout';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path='/pay' element={<Checkout/>}/>
                 <Route path="rental-location/:id" element={<LocationId />} />
                 <Route path="rental/register" element={<Register />} />
                 <Route path='user/sign-in' element={<Signin />} />

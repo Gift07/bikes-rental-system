@@ -10,13 +10,14 @@ import {fetchMyRents} from '../store/actions/myrents'
 
 const Profile = () => {
   const { firstname, email, user_role, userId } = useSelector(state => state.auth)
+  const { error, myrents, my_loading } = useSelector(state => state.myrents)
   const { locations } = useSelector(state => state.location)
   const { message } = useSelector(state => state.rent)
   
   const [checkout, setCheckout] = useState(false)
 
-  console.log(locations[0])
-  console.log(userId)
+  const me = myrents.find((item) => item.user._id = userId)
+
   // console.log(locations[1].owner === userId)
 
   const dispatch = useDispatch()
@@ -80,13 +81,6 @@ const Profile = () => {
             <Outlet/>
           </div>
       </div>
-        {checkout && (
-        <div className="fixed top-0 z-30 w-screen h-screen flex flex-col items-center justify-center glass">
-          <Checkout
-            checkout={checkout}
-            setCheckout={setCheckout}
-            />
-        </div> )}
       </div>
   )
 }

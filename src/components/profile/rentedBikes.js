@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { fetchMyRents } from "../../store/actions/myrents"
 import { returnBike } from "../../store/actions/rent"
 import {returnTheBike} from "../../store/actions/bikes"
+import {Navigate} from "react-router-dom"
 import moment from "moment"
 
 const RentedBikes = () => {
@@ -15,12 +16,19 @@ const RentedBikes = () => {
   }, [dispatch])
 
   const me = myrents.find((item) => item.user._id = userId)
-  console.log(me)
+  const bie = me.bike._id
+
+  const rentr = me.user._id
+
+  const locaton = me.location._id
 
   const handleClick = () => {
-    dispatch(returnBike({ bike: me.bike._id, location: me.location._id, renter: me.renter._id }))
-    dispatch(returnTheBike({ bike: me.bike._id }))
+    dispatch(returnBike({ bike: bie, location:locaton , renter:rentr }))
+    dispatch(returnTheBike({ bike: bie }))
+    window.location.reload()
   }
+
+  if(localStorage.getItem("payment")) return <Navigate to="/"/>
   
   return (
     <>

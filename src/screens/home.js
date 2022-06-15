@@ -11,12 +11,15 @@ import Driver from '../components/Home/driver';
 import Search from '../components/Home/search';
 import Sidebar from '../components/sidebar';
 import Footer from '../components/footer';
+import Checkout from './checkout';
 import { loadUser } from '../store/actions/auth';
+import {Navigate} from "react-router-dom"
 
 
 const Home = () => {
     const [navScroll, setNavScroll] = useState(false)
     const [sidebar,setSidebar] = useState(false)
+    const [checkout, setCheckout] = useState(false)
     const dispatch = useDispatch()
     const {is_loading,locations,error} = useSelector(state => state.location)
     useEffect(() => {
@@ -35,11 +38,15 @@ const Home = () => {
         dispatch(loadUser())
     }, [dispatch])
     
+    const data = JSON.parse(localStorage.getItem("payment"))
+
+    if(data) return <Navigate to="/pay"/>
+    
     const { username, is_authenticated, user_role } = useSelector(state => state.auth)
-    console.log(user_role)
+
     return (
         <div className="w-screen h-auto relative">
-            <div className="w-full min-h-screen bg-black text-gray-50  font-gotham absolute">
+            <div className="w-full bg-black text-gray-50  font-gotham absolute">
                 <Navbar
                     navScroll={navScroll}
                     sidebar={sidebar}

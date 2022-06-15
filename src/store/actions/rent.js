@@ -42,11 +42,13 @@ export const fetchRent = () => async (dispatch) => {
 }
 
 export const returnBike = (body) => async (dispatch) =>{
+    console.log(body)
     try {
         dispatch({
             type:constants.RETURN_BIKE_REQUEST
         })
         const { data } = await axiosInstance.patch("rent", body)
+        console.log(data)
         localStorage.setItem("payment", JSON.stringify(data))
         dispatch({
             type: constants.RETURN_BIKE_SUCCESS,
