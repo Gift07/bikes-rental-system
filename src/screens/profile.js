@@ -2,21 +2,33 @@ import React, { useState,useEffect } from 'react'
 import {useSelector,useDispatch} from "react-redux"
 import Navbar from "../components/navbar"
 import { loadUser } from "../store/actions/auth"
-import "../layout.scss"
 import { fetchRent } from '../store/actions/rent'
 import { NavLink, Outlet } from "react-router-dom"
-import Checkout from "../screens/checkout"
 import {fetchMyRents} from '../store/actions/myrents'
+import { fetchLocation } from '../store/actions/location'
+import { returnTheBike } from '../store/actions/bikes'
+import { returnBike } from '../store/actions/rent'
 
 const Profile = () => {
   const { firstname, email, user_role, userId } = useSelector(state => state.auth)
+  const {returntBike} = useSelector(state => state.bikes)
   const { error, myrents, my_loading } = useSelector(state => state.myrents)
   const { locations } = useSelector(state => state.location)
-  const { message } = useSelector(state => state.rent)
-  
-  const [checkout, setCheckout] = useState(false)
+  const [selected,setSelected] = useState("")
+  let bie
+  let rentr
+  let locaton
 
   const me = myrents.find((item) => item.user._id = userId)
+  console.log(me)
+  if(me){
+    bie = me.bike._id
+  
+    rentr = me.user._id
+  
+    locaton = me.location._id
+  }
+
 
   // console.log(locations[1].owner === userId)
 
@@ -25,12 +37,18 @@ const Profile = () => {
   useEffect(() => {
     dispatch(loadUser())
     dispatch(fetchRent())
+    dispatch(fetchLocation())
     dispatch(fetchMyRents())
   }, [dispatch])
 
-  if (message) {
-    const data = JSON.parse(localStorage.getItem('payment'))
-    setCheckout(!checkout)
+  const handleClick = ()=>{
+    dispatch(returnBike({ bike: bie, location:locaton , renter:rentr }))
+    dispatch(returnTheBike({ bike: bie, location:selected }))
+
+    dispatch({
+      type:"NORETURN"
+    })
+    window.location.reload()
   }
   
   return (
@@ -81,6 +99,35 @@ const Profile = () => {
             <Outlet/>
           </div>
       </div>
+      {returntBike && (
+        <div className='absolute glass w-screen h-screen z-50 flex items-center justify-center'>
+          <div className='w-72 p-5 bg-red-50 rounded-lg'>
+            <div>
+              <h1 style={{textAlign:"center"}} className='text-gray-900 text-md'>
+                Select The locetion you are returning the bike from
+              </h1>
+            </div>
+            <div className='flex items-center justify-center w-full mt-4'>
+  `          <select onChange={(e)=>setSelected(e.target.value)} className='text-gray-900 p-2 bg-red-50 rounded-md h-10 w-64 focus:border-2 border-sky-500'>
+              <option>
+                Choose location
+              </option>
+              {locations.map((place) =>(
+              <option value={place._id} className='text-black' key={place._id}>
+                {place.name}
+              </option>
+              )
+              )}
+            </select>`
+            </div>
+          <div className='w-full flex items-center justify-center mt-4'>
+            <button onClick={handleClick} className='px-3 py-2 bg-blue-600 rounded-md text-white'>
+              Return bike
+            </button>
+          </div>
+          </div>
+        </div>
+      )}
       </div>
   )
 }

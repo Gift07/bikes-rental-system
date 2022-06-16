@@ -23,9 +23,9 @@ const RentedBikes = () => {
   const locaton = me.location._id
 
   const handleClick = () => {
-    dispatch(returnBike({ bike: bie, location:locaton , renter:rentr }))
-    dispatch(returnTheBike({ bike: bie }))
-    window.location.reload()
+    dispatch({
+      type:"RETURN"
+    })
   }
 
   if(localStorage.getItem("payment")) return <Navigate to="/"/>

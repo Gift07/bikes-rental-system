@@ -30,7 +30,7 @@ const Bike = ({ bike, location }) => {
                         {location.location?.name}
                     </p>
                     <p className='font-medium text-md px-2'>
-                      {bike.owner.username}
+                      {bike.owner.firstname}
                     </p>
                 </div>
                 <div>

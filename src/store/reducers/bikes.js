@@ -4,6 +4,7 @@ const initialState = {
     is_loading: false,
     bikes: [],
     bike: null,
+    returntBike:false,
     error: null,
     message:"",
     message:null,
@@ -51,6 +52,18 @@ const bikesReducer = (state = initialState, action) => {
                 ...state,
                 is_loading: false,
                 message:action.payload
+            }
+        case "RETURN":
+            return{
+                ...state,
+                is_loading:false,
+                returntBike:true
+            }
+        case "NORETURN":
+            return{
+                ...state,
+                is_loading:false,
+                returntBike:false
             }
         default:
             return state;

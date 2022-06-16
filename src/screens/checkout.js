@@ -20,13 +20,13 @@ const Checkout = ({ checkout, setCheckout, time, location, price,bike,from }) =>
     console.log(cart)
 
     const handleClick = () => {
-        console.log(from)
-        dispatch(createTravel({
+        console.log({
             from:location,
             userId,
             time,
             price:cart.price,
-        }))
+        })
+        localStorage.removeItem('payment')
     }
   return (
     <div className="w-screen h-screen flex items-center justify-center bg-black">
