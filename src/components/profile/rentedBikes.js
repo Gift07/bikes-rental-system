@@ -53,7 +53,7 @@ const RentedBikes = () => {
           </div>
         </div>
       </div>
-        ) : (
+        ) : me.length === 0 && (
             <div className="w-full flex items-center justify-center mt-4">
               <h1>You have not rented any bike</h1>
             </div>

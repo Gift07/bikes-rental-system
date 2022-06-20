@@ -43,7 +43,6 @@ const Home = () => {
 
     if(data) return <Navigate to="/pay"/>
     
-
     return (
         <div className="w-screen h-auto relative">
             <div className="w-full bg-black text-gray-50  font-gotham absolute">

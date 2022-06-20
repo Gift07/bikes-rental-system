@@ -20,7 +20,7 @@ const Profile = () => {
   let locaton
 
   const me = myrents.find((item) => item.user._id = userId)
-  console.log(me)
+
   if(me){
     bie = me.bike._id
   
@@ -94,7 +94,7 @@ const Profile = () => {
                 <NavLink to="/profile/rent-bike">
                   <li>Rent</li>
                 </NavLink>
-                ) : (
+                ) : me && (
                     <NavLink to="/profile/rented-bikes">
                       <li>Rented bikes</li>
                     </NavLink>
