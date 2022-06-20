@@ -6,6 +6,7 @@ const initialState = {
     is_authenticated: false,
     message:"",
     is_loading:false,
+    has_requested:false,
     firstname: null,
     lastname: null,
     email: null,
@@ -20,6 +21,7 @@ const authReducer = (state = initialState, action) => {
         case actionTypes.SIGN_IN_REQUEST:
         case actionTypes.USER_VERIFY_REQUEST:
         case actionTypes.USER_UPDATE_ROLE_REQUEST:
+        case actionTypes.USER_UPDATE_REQUEST:
             return {
                 ...state,
                 is_loading:true,
@@ -34,6 +36,7 @@ const authReducer = (state = initialState, action) => {
         case actionTypes.USER_VERIFY_SUCCESS:
         case actionTypes.USER_LOADED_SUCCESSFULL:
         case actionTypes.USER_UPDATE_ROLE_SUCCESS:
+        case actionTypes.USER_UPDATE_SUCCESS:
             if (action.payload.accessToken) {          
                 const user = jwtDecode(action.payload.accessToken)
                 return {
@@ -43,6 +46,7 @@ const authReducer = (state = initialState, action) => {
                     error: null,
                     accessToken: action.payload.accessToken,
                     firstname: user.firstname,
+                    has_requested:user.has_requested,
                     lastname: user.lastname,
                     userId: user._id,
                     email: user.email,
@@ -54,6 +58,7 @@ const authReducer = (state = initialState, action) => {
         case actionTypes.SIGN_IN_FAIL:
         case actionTypes.SIGN_UP_FAIL:
         case actionTypes.USER_VERIFY_FAILED:
+        case actionTypes.USER_UPDATE_FAILED:
         case actionTypes.USER_UPDATE_ROLE_FAILED:
             return {
                 ...state,

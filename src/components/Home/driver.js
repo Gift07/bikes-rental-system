@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import {useSelector} from "react-redux"
 
 const Driver = () => {
-    const {firstname,user_role} = useSelector(state => state.auth)
+    const {firstname,user_role,has_requested} = useSelector(state => state.auth)
   return (
       <div className="w-full h-96 flex flex-col bg-black justify-center items-center">
           <h1 style={{textAlign: 'center'}} className="text-2xl lg:text-3xl font-bold text-gray-50 px-3 lg:px-5">
@@ -14,13 +14,17 @@ const Driver = () => {
           </p>
           {(user_role === "NORMALUSER") ? (
             <Link to="/rental/register">                                       
-                <button className="px-5 py-2 rounded-md bg-green-600 mt-3 hover:bg-green-700">
+                <button className="px-5 py-2 rounded-md bg-green-600 mt-3 hover:bg-blue-700">
                     Open your place
                 </button>
             </Link>
+          ) : (user_role === "NORMALUSER" && has_requested) ? (
+            <div>
+                <h1>Your Request will be approved by admin very soon</h1>
+            </div>
           ) : (
             <Link to="/profile">                                       
-            <button className="px-5 py-2 rounded-md bg-blue-600 mt-3 hover:bg-green-700">
+            <button className="px-5 py-2 rounded-md bg-blue-600 mt-3 hover:bg-blue-700">
                 visit profile
             </button>
         </Link>

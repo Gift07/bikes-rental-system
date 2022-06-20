@@ -113,6 +113,35 @@ export const setStaff = (id) => {
         }
     }
 }
+// requesting to open location
+export const setRequested = (id) => {
+    return async (dispatch) => {
+        try {
+            dispatch({
+                type: actionTypes.USER_UPDATE_REQUEST
+            })
+            const {data} = await axiosInstance.post('request/staff',{id})
+            dispatch({
+                type: actionTypes.USER_UPDATE_SUCCESS,
+                payload: data
+            })
+            if (data) {
+            console.log(data)
+             localStorage.clear()
+            // setting the token to the locastorage
+            localStorage.setItem(
+                "accessToken",data.accessToken
+            );
+            }
+            
+        } catch (error) {
+            dispatch({
+                type: actionTypes.USER_UPDATE_FAILED,
+                payload: error
+            })
+        }
+    }
+}
   // LOG OUT
 export const logOut = () => async (dispatch) => {
     dispatch({

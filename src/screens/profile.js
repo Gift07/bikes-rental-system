@@ -80,6 +80,16 @@ const Profile = () => {
                 <li>Add Bike</li>
               </NavLink>
                 )}
+              {user_role === "ADMIN" && (
+              <NavLink to="/profile/approve-location">
+                <li>Approve location</li>
+              </NavLink>
+                )}
+                {user_role === "ADMIN" && (
+              <NavLink to="/profile/available-location">
+                <li>Available location</li>
+              </NavLink>
+                )}
               {user_role === "STAFF" ? (
                 <NavLink to="/profile/rent-bike">
                   <li>Rent</li>

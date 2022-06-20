@@ -11,16 +11,18 @@ const RentedBikes = () => {
   const { error, myrents, my_loading } = useSelector(state => state.myrents)
   const {userId} = useSelector(state => state.auth)
 
-  useEffect(() => {
-    dispatch(fetchMyRents())
-  }, [dispatch])
-
   const me = myrents.find((item) => item.user._id = userId)
   const bie = me.bike._id
 
   const rentr = me.user._id
 
   const locaton = me.location._id
+
+  useEffect(() => {
+    dispatch(fetchMyRents())
+  }, [dispatch])
+
+
 
   const handleClick = () => {
     dispatch({

@@ -29,40 +29,11 @@ const Locations = ({ locations, is_loading, error }) => {
                     </div>) : error ? (<div>
                         error.message
                   </div>) : (
-                        <Swiper
-                            slidesPerView={5}
-                            spaceBetween={2}
-                            navigation
-                            breakpoints={{
-                            420:{
-                                slidesPerView: 1,
-                                spaceBetween: 20,
-                            },
-                            640: {
-                                slidesPerView: 2,
-                                spaceBetween: 20,
-                            },
-                            768: {
-                                slidesPerView: 3,
-                                spaceBetween: 20,
-                            },
-                            1024: {
-                                slidesPerView: 5,
-                                spaceBetween: 10,
-                            },
-                            2560: {
-                                slidesPerView: 5,
-                                spaceBetween: 10,
-                            },
-                            }}
-                            isBeginning={false}
-                            >
-                              {locations.map(location => (
-                                    <SwiperSlide key={location._id}>
-                                        <Card location={location} />
-                                    </SwiperSlide>                                   
-                                ))}
-                        </Swiper>      
+                       <div className='grid grid-cols-5 items-center justify-center'>
+                           {locations.map(location => (
+                               <Card location={location} key={location._id} />                                      
+                            ))}   
+                       </div>
                     )}
                 </div>
                 <div className='w-screen h-full lg:hidden md:hidden flex items-center justify-center'>

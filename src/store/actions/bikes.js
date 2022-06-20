@@ -85,3 +85,9 @@ export const returnTheBike = (body) => {
         }
     }
 }
+
+export const setReturn = () => (dispatch)=>{
+    dispatch({
+        type:"RETURN",
+    })
+}

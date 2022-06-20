@@ -54,3 +54,21 @@ export const fetchLocationId = (id) => async (dispatch) => {
         })
     }
 }
+
+export const approve = (id) => async (dispatch) => {
+    try {
+       dispatch({
+        type: constants.LOCATION_APPROVAL_REQUEST
+       }) 
+       const {data} = await axiosInstance.patch('location/approve', {locationId:id})
+       dispatch({
+        type:constants.LOCATION_APPROVAL_SUCCESSFUL,
+        payload:data
+       })
+    } catch (error) {
+        dispatch({
+            type:constants.LOCATION_APPROVAL_FAIL,
+            payload:error
+        })
+    }
+}

@@ -15,6 +15,8 @@ import Bike from "./components/profile/bike"
 import RentBike from "./components/profile/rentBike"
 import Profits from "./components/profile/profits"
 import RentedBikes from "./components/profile/rentedBikes"
+import Approve from './components/profile/approve';
+import Available from './components/profile/available';
 import Checkout from './screens/checkout';
 
 
@@ -35,6 +37,8 @@ function App() {
                     <Route path="rent-bike" element={<RentBike/>} />
                     <Route path="profits" element={<Profits />} />
                     <Route path= "rented-bikes" element={<RentedBikes />} />
+                    <Route path="approve-location" element={<Approve />} />
+                    <Route path= "available-location" element={<Available />} />
                 </Route>
                 <Route path="travels" element={is_authenticated ? <Travels /> : <Navigate replace to="/"/>} />
                 <Route path="bike/rent" element={is_authenticated ? <Cart /> : <Navigate replace to="/"/>} />

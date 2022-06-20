@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector} from 'react-redux'
 import { Link, Navigate } from 'react-router-dom'
 import { createLocation } from '../store/actions/location'
-import { setStaff, loadUser } from '../store/actions/auth'
+import { setRequested, loadUser } from '../store/actions/auth'
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -17,7 +17,7 @@ const Register = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         dispatch(createLocation({ ...formData,owner:userId }))
-        dispatch(setStaff(userId))
+        dispatch(setRequested(userId))
     }
     useEffect(() => {
         dispatch(loadUser())

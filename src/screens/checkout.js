@@ -66,6 +66,12 @@ const Checkout = ({ checkout, setCheckout, time, location, price,bike,from }) =>
                   <button onClick={handleClick} className="px-3 py-2 bg-blue-600 rounded-lg text-white">
                       { travel_loading ? "loading..": "Pay with paypal"}
                   </button>
+                  <button className="px-3 py-2 bg-blue-600 rounded-md text-white">
+                    Tigo pesa
+                  </button>
+                  <button className="px-3 py-2 bg-red-600 rounded-md text-white">
+                    M-pesa
+                  </button>
               </div>
           </div>
       </div>

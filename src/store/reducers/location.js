@@ -16,6 +16,7 @@ const locationReducer = (state = initialState, action) => {
         case constants.LOCATIONS_FETCHING_REQUEST:
         case constants.LOCATION_FETCHING_REQUEST:
         case constants.LOCATION_CREATE_REQUEST:
+        case constants.LOCATION_APPROVAL_REQUEST:
             return {
                 ...state,
                 is_loading: true,
@@ -37,6 +38,7 @@ const locationReducer = (state = initialState, action) => {
                 }
             }
         case constants.LOCATION_CREATE_SUCCESSFUL:
+        case constants.LOCATION_APPROVAL_SUCCESSFUL:
             return {
                 ...state,
                 is_loading: false,
@@ -45,6 +47,7 @@ const locationReducer = (state = initialState, action) => {
         case constants.LOCATION_CREATE_FAIL:
         case constants.LOCATIONS_FETCHING_FAIL:
         case constants.LOCATION_CREATE_FAIL:
+        case constants.LOCATION_APPROVAL_FAIL:
             return {
                 ...state,
                 is_loading: false,
