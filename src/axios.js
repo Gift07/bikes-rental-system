@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:5000/api/";
+const baseURL = "https://bikes-rent.herokuapp.com/api/";
 
 const axiosInstance = axios.create({
   baseURL,
