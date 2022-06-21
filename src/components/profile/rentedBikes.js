@@ -22,8 +22,6 @@ const RentedBikes = () => {
     dispatch(fetchMyRents())
   }, [dispatch])
 
-
-
   const handleClick = () => {
     dispatch({
       type:"RETURN"

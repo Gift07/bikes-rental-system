@@ -20,12 +20,12 @@ const Checkout = ({ checkout, setCheckout, time, location, price,bike,from }) =>
     console.log(cart)
 
     const handleClick = () => {
-        console.log({
+        dispatch(createTravel({
             from:location,
             userId,
             time,
             price:cart.price,
-        })
+        }))
         localStorage.removeItem('payment')
     }
   return (
@@ -66,10 +66,10 @@ const Checkout = ({ checkout, setCheckout, time, location, price,bike,from }) =>
                   <button onClick={handleClick} className="px-3 py-2 bg-blue-600 rounded-lg text-white">
                       { travel_loading ? "loading..": "Pay with paypal"}
                   </button>
-                  <button className="px-3 py-2 bg-blue-600 rounded-md text-white">
+                  <button className="px-3 py-2 ml-4 bg-blue-600 rounded-md text-white">
                     Tigo pesa
                   </button>
-                  <button className="px-3 py-2 bg-red-600 rounded-md text-white">
+                  <button className="px-3 py-2 ml-4 bg-red-600 rounded-md text-white">
                     M-pesa
                   </button>
               </div>
