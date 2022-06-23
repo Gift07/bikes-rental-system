@@ -10,8 +10,6 @@ const Approve = () => {
     const [location,setLocation] = useState("")
     const [user,setUser] = useState("")
 
-    console.log(locations)
-
     useEffect(()=>{
         dispatch(fetchApproveLocation())
     },[dispatch])
@@ -19,26 +17,28 @@ const Approve = () => {
     const handleClick = () => {
       dispatch(approve(location))
       dispatch(setStaff(user))
+      alert("approved")
+      window.location.reload()
     }
 
   return (
     <div className="w-full flex justify-center mt-4 gap-x-3">
-       {is_loading ? (
+       {is_loading && (
         <div>
           <h1>Loading...</h1>
         </div>
-       ) : locations.map((item)=> <ApproveLocation
+       )}
+       {locations ? locations.map((item)=> <ApproveLocation
        key={item._id} 
        item={item} 
        handleClick={handleClick} 
        setUser={setUser}
-       setLocation={setLocation}/> )}
-    </div>
-  ) ? error : (
+       setLocation={setLocation}/>) : error && (
     <div>
       <h1>404- Not found</h1>
+    </div>)}
     </div>
-  )
+  ) 
 }
 
 export default Approve
