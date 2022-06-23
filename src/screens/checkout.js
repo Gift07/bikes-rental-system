@@ -17,7 +17,6 @@ const Checkout = ({ checkout, setCheckout, time, location, price,bike,from }) =>
         setCart(JSON.parse(localStorage.getItem('payment')))
     }, [dispatch])
 
-    console.log(cart)
     const handleClick = () => {
         dispatch(createTravel({
             from:cart.startTime,
@@ -26,7 +25,11 @@ const Checkout = ({ checkout, setCheckout, time, location, price,bike,from }) =>
             price:cart.price,
             bike:cart.bike,
         }))
+        localStorage.removeItem("payment")
+        window.location.reload()
     }
+    if(!localStorage.getItem("payment")) return <Navigate to="/" />
+
   return (
     <div className="w-screen min-h-screen bg-black font-gotham flex items-center justify-center text-gray-50">
       <div className="w-11/12 lg:w-1/2 h-80 bg-red-50 font-gotham text-gray-800 rounded-lg">
