@@ -24,6 +24,9 @@ const Register = () => {
     }, [dispatch])
 
     if (user_role === 'STAFF') return <Navigate to="/"/>
+
+    else if (has_requested) return <Navigate to="/"/>
+    
   return (
       <div className="w-screen min-h-screen bg-black font-gotham text-gray-50">
           <div className='w-full flex items-center'>

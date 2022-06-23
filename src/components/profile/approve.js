@@ -10,6 +10,8 @@ const Approve = () => {
     const [location,setLocation] = useState("")
     const [user,setUser] = useState("")
 
+    console.log(locations)
+
     useEffect(()=>{
         dispatch(fetchApproveLocation())
     },[dispatch])
@@ -25,7 +27,8 @@ const Approve = () => {
         <div>
           <h1>Loading...</h1>
         </div>
-       ) : locations.map((item)=> <ApproveLocation 
+       ) : locations.map((item)=> <ApproveLocation
+       key={item._id} 
        item={item} 
        handleClick={handleClick} 
        setUser={setUser}
