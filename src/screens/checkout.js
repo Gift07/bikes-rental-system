@@ -3,6 +3,7 @@ import { AiOutlineClose } from "react-icons/ai"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchUserLocation } from "../store/actions/map"
 import { createTravel } from "../store/actions/travel"
+import { Navigate } from "react-router-dom"
 
 
 const Checkout = ({ checkout, setCheckout, time, location, price,bike,from }) => {
