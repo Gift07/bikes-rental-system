@@ -57,7 +57,6 @@ export const fetchBikeId = (id) => async (dispatch) => {
 }
 
 export const rentTheBike = (id) => {
-    console.log("here")
     return async (dispatch) => {
         try {
             const { data } = await axiosInstance.patch("/bikes/rent", { id }) 
@@ -72,7 +71,6 @@ export const rentTheBike = (id) => {
 }
 
 export const returnTheBike = (body) => {
-    console.log(body)
     return async (dispatch) => {
         try {
             const { data } = await axiosInstance.patch("/bikes/return", body) 

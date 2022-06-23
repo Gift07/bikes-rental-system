@@ -4,7 +4,7 @@ import Navbar from "../components/navbar"
 import { loadUser } from "../store/actions/auth"
 import { fetchRent } from '../store/actions/rent'
 import { NavLink, Outlet } from "react-router-dom"
-import {fetchMyRents} from '../store/actions/myrents'
+import {deleteMyRents, fetchMyRents} from '../store/actions/myrents'
 import { fetchLocation } from '../store/actions/location'
 import { returnTheBike } from '../store/actions/bikes'
 import { returnBike } from '../store/actions/rent'
@@ -43,12 +43,15 @@ const Profile = () => {
 
   const handleClick = ()=>{
     dispatch(returnBike({ bike: bie, location:locaton , renter:rentr }))
-    // dispatch(returnTheBike({ bike: bie, location:selected }))
+    dispatch(returnTheBike({ bike: bie, location:selected }))
 
-    // dispatch({
-    //   type:"NORETURN"
-    // })
-    // window.location.reload()
+    // deleting my rents
+    dispatch(deleteMyRents({ bike:bie, location:locaton, user:rentr}))
+
+    dispatch({
+      type:"NORETURN"
+    })
+    window.location.reload()
   }
   
   return (

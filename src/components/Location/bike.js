@@ -6,7 +6,7 @@ const Bike = ({ bike, location }) => {
     const dispatch = useDispatch()
     const locationName = location.location.name
     const locationId = location.location._id
-    const bikeLocation = useState({locationName,locationId})
+    const bikeLocation = useState({locationName, locationId})
     const bikeId = bike
     
     const handleClick = () => {
@@ -16,7 +16,7 @@ const Bike = ({ bike, location }) => {
     return (
         <div style={{
             width:"10rem"
-          }} className='h-72 rounded-lg bg-red-50'>
+          }} className='pb-4 rounded-lg bg-red-50'>
               <div className='w-full flex items-center justify-center mt-2'>
                   <img
                     className='w-11/12 rounded-lg h-36 object-cover'

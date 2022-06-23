@@ -30,12 +30,7 @@ const Checkout = ({ checkout, setCheckout, time, location, price,bike,from }) =>
     }
   return (
     <div className="w-screen h-screen flex items-center justify-center bg-black">
-        <div className="w-11/12 lg:w-1/2 h-80 bg-red-50 font-gotham text-gray-800 rounded-lg">
-          <div className="w-full flex justify-end items-center">
-              <div className="px-3 py-1">
-                 <AiOutlineClose onClick={()=>setCheckout(!checkout)} size="22px" color="black"/>
-              </div>
-          </div>
+        <div className="w-11/12 lg:w-1/2 p-4 bg-red-50 font-gotham text-gray-800 rounded-lg">
           <div className="flex items-center justify-center text-xl lg:text-3xl font-bold py-2">
               Complete transaction
           </div>
@@ -48,7 +43,7 @@ const Checkout = ({ checkout, setCheckout, time, location, price,bike,from }) =>
                       Starting time:<div className="bg-green-300 rounded-lg p-1">{cart.startTime}</div>
                   </p>
                   <p className="flex items-center">
-                      Estimated time :<div className="bg-green-300 rounded-lg p-1 mt-2">{ cart.timeTaken}hr</div>
+                      Time taken :<div className="bg-green-300 rounded-lg p-1 mt-2">{ cart.timeTaken}</div>
                   </p>
                   <p className="flex items-center">
                       Price:<div className="bg-green-300 rounded-lg p-1 mt-2">{cart.price} Usd</div>

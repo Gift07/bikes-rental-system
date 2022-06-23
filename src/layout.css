@@ -6,3 +6,8 @@
     border-radius: 50%;
     cursor: pointer;
   }
+
+  .active{
+    border-bottom: 2px solid rgba(6, 44, 237, 0.904);
+    padding: 3px;
+  }

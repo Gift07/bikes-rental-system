@@ -115,12 +115,13 @@ export const setStaff = (id) => {
 }
 // requesting to open location
 export const setRequested = (id) => {
+    console.log(id)
     return async (dispatch) => {
         try {
             dispatch({
                 type: actionTypes.USER_UPDATE_REQUEST
             })
-            const {data} = await axiosInstance.post('request/staff',{id})
+            const {data} = await axiosInstance.patch('auth/request/staff',{id})
             dispatch({
                 type: actionTypes.USER_UPDATE_SUCCESS,
                 payload: data

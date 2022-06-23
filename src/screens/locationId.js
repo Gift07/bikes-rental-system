@@ -70,7 +70,7 @@ const LocationId = () => {
             {location.bikes.map((bike) => <Card bike={bike} location={location} />)}
           </div>
         </div>
-        <div className='w-full flex flex-col items-center justify-center lg:hidden md:hidden'>
+        <div className='w-full flex flex-col pb-10 items-center justify-center lg:hidden md:hidden'>
           <div className='grid grid-cols-2 items-center justify-center gap-4 text-gray-900 mb-8 p-4'>
             {location.bikes.map(bike => <Bike bike={bike} location={location} />)}
           </div>

@@ -37,6 +37,25 @@ export const fetchLocation = () => async (dispatch) => {
     }
 }
 
+export const fetchApproveLocation = () => async (dispatch) => {
+    console.log("here")
+    try {
+        dispatch({
+            type:constants.LOCATIONS_APPROVE_FETCHING_REQUEST
+        })
+        const { data } = await axiosInstance.get('location/approve/location')
+        dispatch({
+            type: constants.LOCATIONS_APPROVE_FETCHING_SUCCESSFUL,
+            payload:data
+        })
+    } catch (error) {
+        dispatch({
+            type: constants.LOCATIONS_APPROVE_FETCHING_FAIL,
+            payload:error
+        })
+    }
+}
+
 export const fetchLocationId = (id) => async (dispatch) => {
     try {
         dispatch({

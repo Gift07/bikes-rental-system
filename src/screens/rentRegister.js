@@ -11,7 +11,7 @@ const Register = () => {
         imageUrl:''
     })
     const dispatch = useDispatch()
-    const { is_loading } = useSelector(state => state.location)
+    const { is_loading, has_requested } = useSelector(state => state.location)
     const { userId ,user_role} = useSelector(state => state.auth)
 
     const handleSubmit = (event) => {
@@ -72,15 +72,22 @@ const Register = () => {
                           className='w-full outline-none rounded-md p-2 border-none text-black' />
                   </div>
                   <div className='w-11/12 lg:w-8/12 py-3 lg:px-10 flex items-center justify-center mb-12'>
+                    {has_requested && (
+                        <button>
+                            Your request is being processed
+                        </button>
+                    )}
+                    {(
                       <button
                           className='px-16 py-2 bg-blue-600 rounded-lg'
-                          type='submit'>
+                        type={has_requested ? "submit" : ""}>
                             {is_loading ? (
                                   <>Loading...</>
                               ) : (
                                   <>Register Location</>
                               )}
                       </button>
+                    )}
                   </div>
               </form>
           </div>

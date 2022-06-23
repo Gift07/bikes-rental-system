@@ -28,16 +28,16 @@ const RentedBikes = () => {
     })
   }
 
-  if(localStorage.getItem("payment")) return <Navigate to="/"/>
+  if(localStorage.getItem("payment")) return <Navigate to="/pay"/>
   
   return (
     <>
     {
         me ? (
       <div className="w-full flex justify-center mt-4">
-        <div className="w-11/12 h-32 rounded-md glass flex items-center">
+        <div className="w-11/12 h-auto rounded-md glass flex items-center">
           <div>
-            <img src={me.bike.imageUrl} alt="bike1" className="h-32 w-36 object-cover rounded-l-md"/>
+            <img src={me.bike.imageUrl} alt="bike1" className="h-full w-36 object-cover rounded-l-md"/>
           </div>
           <div className="h-full p-2">
             <ul>
