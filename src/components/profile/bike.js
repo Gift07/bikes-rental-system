@@ -7,7 +7,7 @@ const Bike = () => {
     const dispatch = useDispatch()
     const { firstname, email, user_role, userId } = useSelector(state => state.auth)
     const {locations} = useSelector(state => state.location)
-    const myLocation = locations.find((location) => (location.owner === userId))
+    const myLocation = locations.find((location) => (location.owner._id === userId))
     const [name, setName] = useState("")
     const [imageUrl, setImageUrl] = useState("") 
 
