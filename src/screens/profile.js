@@ -43,15 +43,15 @@ const Profile = () => {
 
   const handleClick = ()=>{
     dispatch(returnBike({ bike: bie, location:locaton , renter:rentr }))
-    // dispatch(returnTheBike({ bike: bie, location:selected }))
+    dispatch(returnTheBike({ bike: bie, location:selected }))
 
-    // // deleting my rents
-    // dispatch(deleteMyRents({ bike:bie, location:locaton, user:rentr}))
+    // deleting my rents
+    dispatch(deleteMyRents({ bike:bie, location:locaton, user:rentr}))
 
-    // dispatch({
-    //   type:"NORETURN"
-    // })
-    // window.location.reload()
+    dispatch({
+      type:"NORETURN"
+    })
+    window.location.reload()
   }
   
   return (
