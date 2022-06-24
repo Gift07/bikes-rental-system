@@ -26,10 +26,7 @@ const Checkout = ({ checkout, setCheckout, time, location, price,bike,from }) =>
             price:cart.price,
             bike:cart.bike,
         }))
-        localStorage.removeItem("payment")
-        window.location.reload()
     }
-    if(!localStorage.getItem("payment")) return <Navigate to="/" />
 
   return (
     <div className="w-screen min-h-screen bg-black font-gotham flex items-center justify-center text-gray-50">

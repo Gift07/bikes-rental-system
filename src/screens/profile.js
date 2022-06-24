@@ -29,11 +29,8 @@ const Profile = () => {
     locaton = me.location._id
   }
 
-
-  // console.log(locations[1].owner === userId)
-
   const dispatch = useDispatch()
-
+  
   useEffect(() => {
     dispatch(loadUser())
     dispatch(fetchRent())
@@ -51,7 +48,9 @@ const Profile = () => {
     dispatch({
       type:"NORETURN"
     })
-    window.location.reload()
+    if(localStorage.getItem("payment")){
+      window.location.reload()
+    }
   }
   
   return (
