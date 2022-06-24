@@ -3,7 +3,6 @@ import axiosInstance from "../../axios"
 
 // adding to the cart
 export const addingToTravels = (cartdata) => async (dispatch) => { 
-  console.log(cartdata)
     try {
       dispatch({
         type: constants.ADD_TO_CART_REQUEST,
