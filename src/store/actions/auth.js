@@ -113,6 +113,22 @@ export const setStaff = (id) => {
         }
     }
 }
+
+export const removeStaff = (id) => {
+    return async (dispatch) => {
+        try {
+            dispatch({
+                type: "SUCCESSFULL_REMOVED"
+            })
+            const {data} = await axiosInstance.post('auth/remove-staff',{userId:id})
+        } catch (error) {
+            dispatch({
+                type: actionTypes.USER_UPDATE_ROLE_FAILED,
+                payload: error
+            })
+        }
+    }
+}
 // requesting to open location
 export const setRequested = (id) => {
     console.log(id)

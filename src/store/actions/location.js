@@ -91,3 +91,39 @@ export const approve = (id) => async (dispatch) => {
         })
     }
 }
+
+export const dissaprove = (id) => async (dispatch) => {
+    try {
+       dispatch({
+        type: constants.LOCATION_DISSAPPROVAL_REQUEST
+       }) 
+       const {data} = await axiosInstance.delete(`location/disapprove/${id}`)
+       dispatch({
+        type:constants.LOCATION_DISSAPPROVAL_SUCCESSFUL,
+        payload:data
+       })
+    } catch (error) {
+        dispatch({
+            type:constants.LOCATION_DISSAPPROVAL_FAIL,
+            payload:error
+        })
+    }
+}
+
+export const deleteLocation = (id) => async (dispatch) => {
+    try {
+       dispatch({
+        type: constants.LOCATION_DELETE_REQUEST
+       }) 
+       const {data} = await axiosInstance.delete(`location/${id}`)
+       dispatch({
+        type:constants.LOCATION_DELETE_SUCCESSFUL,
+        payload:data
+       })
+    } catch (error) {
+        dispatch({
+            type:constants.LOCATION_DELETE_FAIL,
+            payload:error
+        })
+    }
+}

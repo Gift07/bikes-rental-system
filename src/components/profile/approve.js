@@ -1,7 +1,7 @@
 import { useDispatch,useSelector } from "react-redux"
 import {useEffect,useState} from "react"
-import { approve, fetchApproveLocation } from "../../store/actions/location"
-import {setStaff} from "../../store/actions/auth"
+import { approve, fetchApproveLocation,dissaprove } from "../../store/actions/location"
+import {removeStaff, setStaff} from "../../store/actions/auth"
 import ApproveLocation from "../Location/approve"
 
 const Approve = () => {
@@ -21,6 +21,13 @@ const Approve = () => {
       window.location.reload()
     }
 
+    const decline = () =>{
+      dispatch(dissaprove(location))
+      dispatch(removeStaff(user))
+      alert("approved")
+      window.location.reload()
+    }
+
   return (
     <div className="w-full flex justify-center mt-4 gap-x-3">
        {is_loading && (
@@ -31,7 +38,8 @@ const Approve = () => {
        {locations ? locations.map((item)=> <ApproveLocation
        key={item._id} 
        item={item} 
-       handleClick={handleClick} 
+       handleClick={handleClick}
+       decline={decline} 
        setUser={setUser}
        setLocation={setLocation}/>) : error && (
     <div>
